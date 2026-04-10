@@ -68,7 +68,7 @@ export default {
   background: #fff;
 }
 .ad-card:hover {
-  transform: translateY(-3px);
+  /* transform: translateY(-3px); */
   box-shadow: 0 8px 24px rgba(103, 58, 183, 0.1) !important;
 }
 </style>
