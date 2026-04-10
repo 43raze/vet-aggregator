@@ -1,5 +1,16 @@
 <script>
-export default {}
+export default {
+  data() {
+    return {
+      rules: [
+        value => {
+          if (value) return true
+          return 'You must enter a first name.'
+        },
+      ],
+    }
+  },
+}
 </script>
 
 <template>
