@@ -17,8 +17,36 @@ const clinics = [
   },
 ]
 
-function addClinic(title, phone, animalsKinds, overstayDays, address, city) {
-  //
+function addClinic(
+  title,
+  description,
+  phone,
+  email,
+  website,
+  address,
+  district,
+  photos,
+  animalsKinds,
+  overstayDays,
+  city,
+) {
+  const id = clinics.length + 1
+  const clinic = {
+    id,
+    title,
+    description,
+    phone,
+    email,
+    website,
+    address,
+    district,
+    photos,
+    animalsKinds,
+    overstayDays,
+    city,
+  }
+  clinics.push(clinic)
+  return clinic
 }
 
 const filters = {
@@ -35,17 +63,33 @@ let isIncludes =
   filters.overstayDaysFrom < clinics[0].overstayDays &&
   clinics[0].overstayDays < filters.overstayDaysTo
 
-isIncludes
-
 const comments = [
   { id: 1, clinicId: 1, author: 'Анна', text: 'Чудова клініка, дякую лікарям' },
   { id: 2, clinicId: 1, author: 'Максим', text: 'Швидко та професійно.' },
 ]
 
-// function addCommentByClinicId(clinicId, author, text) {
-//   // body
+function addCommentByClinicId(clinicId, author, text) {
+  const id = comments.length + 1
+  const comment = { id, clinicId, author, text }
+  comments.push(comment)
+  return comment
+}
 
-//   comments.push(clinicId)
-// }
-
-// addCommentByClinicId(1, 'Petya', 'всё супер!')
+console.log(
+  addClinic(
+    'Клініка Дружок',
+    'Опис клініки',
+    '+38 (044) 999-00-11',
+    'druzhok@vet.ua',
+    'druzhok-vet.ua',
+    'Khreshatik str. 1',
+    'Pecherskij',
+    [''],
+    ['Кіт'],
+    5,
+    'Kyiv',
+  ),
+)
+console.log(clinics)
+console.log(addCommentByClinicId(1, 'Petya', 'всё супер!'))
+console.log(comments)
