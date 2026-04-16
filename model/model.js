@@ -27,4 +27,3 @@ addComment({
 // console.log(comments)
 
 console.log(getClinicRankById(clinics[0].id))
-//test
