@@ -8,22 +8,22 @@ addComment({
   rank: 5, // надо это как-то отрисовать
 })
 
-addComment({
-  clinicId: clinics[0].id,
-  author: 'John',
-  text: 'Швидко та професійно!',
-  rank: 4,
-})
+// addComment({
+//   clinicId: clinics[0].id,
+//   author: 'John',
+//   text: 'Швидко та професійно!',
+//   rank: 4,
+// })
 
-addComment({
-  clinicId: clinics[0].id,
-  author: 'John',
-  text: 'Швидко та професійно!',
-  rank: 3,
-})
+// addComment({
+//   clinicId: clinics[0].id,
+//   author: 'John',
+//   text: 'Швидко та професійно!',
+//   rank: 3,
+// })
 
 // console.log(clinics)
 
 // console.log(comments)
 
-console.log(getClinicRankById(clinics[0].id))
+// console.log(getClinicRankById(clinics[1].id))

@@ -1,3 +1,5 @@
+import { getClinicRankById } from './comments.js'
+
 export const clinics = []
 
 // редактировать
@@ -14,7 +16,7 @@ export function getClinicById(id) {
 function createClinic(dto) {
   return {
     id: Math.trunc(Math.random() * 10000),
-    rank: 0,
+    rank: getClinicRankById(this.id),
     photos: [],
     district: '',
     animalsKinds: [],
@@ -37,16 +39,16 @@ addClinic({
   city: 'Kyiv',
 })
 
-addClinic({
-  title: 'Ветеринарна клініка «Лапки»',
-  description:
-    'Повний спектр ветеринарних послуг. Досвідчені лікарі, сучасне обладнання. Працюємо 24/7.',
-  phone: '+38 (044) 123-45-67',
-  email: 'lapki@vet.ua',
-  address: 'Khreshatik str. 14',
-  city: 'Kyiv',
-})
+// addClinic({
+//   title: 'Ветеринарна клініка «Лапки»',
+//   description:
+//     'Повний спектр ветеринарних послуг. Досвідчені лікарі, сучасне обладнання. Працюємо 24/7.',
+//   phone: '+38 (044) 123-45-67',
+//   email: 'lapki@vet.ua',
+//   address: 'Khreshatik str. 14',
+//   city: 'Kyiv',
+// })
 
 // console.log(clinics)
 
-console.log(getClinics())
+// console.log(getClinics())
