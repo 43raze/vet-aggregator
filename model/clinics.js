@@ -1,9 +1,15 @@
 export const clinics = []
 
-// получать все
-// получать по id
 // редактировать
 // удалять
+
+export function getClinics() {
+  return clinics
+}
+
+export function getClinicById(id) {
+  return clinics.find(c => c.id === id)
+}
 
 function createClinic(dto) {
   return {
@@ -42,3 +48,5 @@ addClinic({
 })
 
 // console.log(clinics)
+
+console.log(getClinics())

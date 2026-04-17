@@ -1,9 +1,15 @@
 export const comments = []
 
-// получать все
-// получать по id
 // редактировать
 // удалять
+
+export function getComments() {
+  return comments
+}
+
+export function getCommentById(id) {
+  return comments.find(c => c.id === id)
+}
 
 function createComment(dto) {
   return {
