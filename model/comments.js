@@ -1,7 +1,16 @@
 export const comments = []
 
-// редактировать
-// удалять
+export function editComment(id, dto) {
+  const comment = getCommentById(id)
+  if (!comment) return
+  Object.assign(comment, dto)
+}
+
+export function deleteComment(id) {
+  const index = comments.findIndex(c => c.id === id)
+  if (index === -1) return
+  comments.splice(index, 1)
+}
 
 export function getComments() {
   return comments
