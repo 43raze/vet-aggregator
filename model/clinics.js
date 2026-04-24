@@ -2,8 +2,17 @@ import { getClinicRankById } from './comments.js'
 
 export const clinics = []
 
-// редактировать
-// удалять
+export function editClinic(id, dto) {
+  const clinic = clinics.find(c => c.id === id)
+  if (!clinic) return
+  Object.assign(clinic, dto)
+}
+
+export function deleteClinic(id) {
+  const index = clinics.findIndex(c => c.id === id)
+  if (index === -1) return
+  clinics.splice(index, 1)
+}
 
 export function getClinics() {
   return clinics
@@ -14,9 +23,11 @@ export function getClinicById(id) {
 }
 
 function createClinic(dto) {
+  const id = Math.trunc(Math.random() * 10000)
+
   return {
-    id: Math.trunc(Math.random() * 10000),
-    rank: getClinicRankById(this.id),
+    id,
+    rank: getClinicRankById(id),
     photos: [],
     district: '',
     animalsKinds: [],
@@ -52,3 +63,7 @@ addClinic({
 // console.log(clinics)
 
 // console.log(getClinics())
+
+// console.log('after:', clinics)
+// deleteClinic(clinics[0].id)
+// console.log('before:', clinics)
