@@ -22,6 +22,7 @@ export default {
       <v-card-title class="text-body-1 font-weight-bold">
         Ветеринарна клініка «Лапки»
       </v-card-title>
+
       <v-card-subtitle>Собака</v-card-subtitle>
     </v-card-item>
 
@@ -52,6 +53,14 @@ export default {
 
         <span class="text-caption">lapki-vet.ua</span>
       </div>
+
+      <v-rating
+        color="amber"
+        density="compact"
+        size="small"
+        readonly
+        half-increments
+      />
     </v-card-text>
 
     <v-divider />
