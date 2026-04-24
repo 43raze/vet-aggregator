@@ -1,10 +1,10 @@
 <script>
 import TheHeader from './components/TheHeader.vue'
 import TheFilterPanel from './components/TheFilterPanel.vue'
-import TheClinicCard from './components/TheClinicCard.vue'
+import ClinicCard from './components/ClinicCard.vue'
 
 export default {
-  components: { TheHeader, TheFilterPanel, TheClinicCard },
+  components: { TheHeader, TheFilterPanel, ClinicCard },
   data() {
     return {
       list: [
@@ -45,7 +45,7 @@ export default {
           <v-col cols="9" class="overflow-y-auto">
             <v-row>
               <v-col cols="12">
-                <TheClinicCard />
+                <ClinicCard />
               </v-col>
             </v-row>
           </v-col>

@@ -24,10 +24,9 @@ export function getClinicById(id) {
 
 function createClinic(dto) {
   const id = Math.trunc(Math.random() * 10000)
-
   return {
     id,
-    rank: getClinicRankById(id),
+    rank: 0, // getClinicRankById(id),
     photos: [],
     district: '',
     animalsKinds: [],
@@ -49,6 +48,8 @@ addClinic({
   address: 'Khreshatik str. 1',
   city: 'Kyiv',
 })
+
+console.log(clinics)
 
 // addClinic({
 //   title: 'Ветеринарна клініка «Лапки»',
