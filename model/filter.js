@@ -10,11 +10,6 @@ const filters = {
   rankTo: 5,
 }
 
-function filtrateClinicsByOverstayDays(clinics, filters) {
-  const filteredClinics = []
-  clinics.map()
-}
-
 const clinic = {
   id: 7299,
   get rank() {
@@ -55,6 +50,6 @@ function filtrateClinicsByRank(clinics, filters) {
 }
 
 console.log(clinic.rank)
-let result = isIncludes(clinic, filters)
+// let result = isIncludes(clinic, filters)
 
-console.log(result)
+// console.log(result)
