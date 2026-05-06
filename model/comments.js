@@ -42,14 +42,14 @@ export function getClinicRankById(clinicId) {
 }
 
 // addComment({
-//   clinicId: 33,
+//   clinicId: 7299,
 //   author: 'Анна',
 //   text: 'Чудова клініка, дякую лікарям',
 //   rank: 5, // надо это как-то отрисовать
 // })
 
 // addComment({
-//   clinicId: 42,
+//   clinicId: 7299,
 //   author: 'John',
 //   text: 'Швидко та професійно!',
 //   rank: 4,
