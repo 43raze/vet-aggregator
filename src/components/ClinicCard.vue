@@ -3,6 +3,13 @@ import TheCommentSection from './TheCommentSection.vue'
 
 export default {
   components: { TheCommentSection },
+
+  props: {
+    clinic: {
+      type: Object,
+      required: true,
+    },
+  },
 }
 </script>
 
@@ -20,52 +27,52 @@ export default {
         </v-avatar>
       </template>
       <v-card-title class="text-body-1 font-weight-bold">
-        Ветеринарна клініка «Лапки»
+        {{ clinic.title }}
       </v-card-title>
 
-      <v-card-subtitle>Собака</v-card-subtitle>
+      <v-card-subtitle>{{ clinic.animal }}</v-card-subtitle>
     </v-card-item>
 
     <v-card-text class="pt-2 pb-1 flex-grow-1">
       <p class="text-body-2 text-medium-emphasis mb-3">
-        Повний спектр ветеринарних послуг. Досвідчені лікарі, сучасне
-        обладнання. Працюємо 24/7.
+        {{ clinic.description }}
       </p>
 
       <div class="d-flex align-center ga-1 mb-1">
         <v-icon size="15" color="deep-purple-lighten-2"
           >mdi-phone-outline</v-icon
         >
-
-        <span class="text-caption">+38 (044) 123-45-67</span>
+        <span class="text-caption">{{ clinic.phone }}</span>
       </div>
 
       <div class="d-flex align-center ga-1 mb-1">
         <v-icon size="15" color="deep-purple-lighten-2"
           >mdi-email-outline</v-icon
         >
-
-        <span class="text-caption">lapki@vet.ua</span>
+        <span class="text-caption">{{ clinic.email }}</span>
       </div>
 
       <div class="d-flex align-center ga-1 mb-1">
         <v-icon size="15" color="deep-purple-lighten-2">mdi-web</v-icon>
-
-        <span class="text-caption">lapki-vet.ua</span>
+        <span class="text-caption">{{ clinic.website }}</span>
       </div>
 
-      <v-rating
-        color="amber"
-        density="compact"
-        size="small"
-        readonly
-        half-increments
-      />
+      <div class="d-flex align-center ga-1 mt-2">
+        <v-rating
+          :model-value="Number(clinic.rank)"
+          color="amber"
+          density="compact"
+          size="small"
+          readonly
+          half-increments
+        />
+        <span class="text-caption text-medium-emphasis">{{ clinic.rank }}</span>
+      </div>
     </v-card-text>
 
     <v-divider />
 
-    <TheCommentSection />
+    <TheCommentSection :comments="clinic.comments" />
   </v-card>
 </template>
 
@@ -77,7 +84,6 @@ export default {
   background: #fff;
 }
 .ad-card:hover {
-  /* transform: translateY(-3px); */
   box-shadow: 0 8px 24px rgba(103, 58, 183, 0.1) !important;
 }
 </style>

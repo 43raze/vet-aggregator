@@ -18,8 +18,8 @@ export default {
           email: 'lapki@vet.ua',
           website: 'lapki-vet.ua',
           comments: [
-            { author: 'Анна', text: 'Чудова клініка, дякую лікарям!' },
-            { author: 'Максим', text: 'Швидко та професійно.' },
+            { author: 'Анна', text: 'Чудова клініка, дякую лікарям!', rank: 5 },
+            { author: 'Максим', text: 'Швидко та професійно.', rank: 4 },
           ],
           photos: [],
           animal: 'Собака',
@@ -44,8 +44,8 @@ export default {
 
           <v-col cols="9" class="overflow-y-auto">
             <v-row>
-              <v-col cols="12">
-                <ClinicCard />
+              <v-col v-for="clinic in list" :key="clinic.id" cols="12">
+                <ClinicCard :clinic="clinic" />
               </v-col>
             </v-row>
           </v-col>
