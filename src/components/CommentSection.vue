@@ -30,22 +30,23 @@ export default {
     >
       <div class="d-flex align-center justify-space-between mb-1">
         <div class="d-flex align-center ga-1">
-          <v-avatar size="20" color="deep-purple-lighten-4">
-            <v-icon size="12" color="deep-purple">mdi-account</v-icon>
+          <v-avatar size="20" color="indigo-lighten-4">
+            <v-icon size="12" color="indigo">mdi-account</v-icon>
           </v-avatar>
-          <span class="text-caption font-weight-medium">{{
-            comment.author
-          }}</span>
+
+          <span class="text-caption font-weight-medium">
+            {{ comment.author }}
+          </span>
         </div>
 
         <v-rating
           v-if="comment.rank"
           :model-value="comment.rank"
-          color="amber"
           density="compact"
           size="x-small"
           readonly
           half-increments
+          class="rating-red"
         />
       </div>
 
@@ -59,10 +60,10 @@ export default {
         <span class="text-caption text-medium-emphasis">Оцінка:</span>
         <v-rating
           v-model="newRank"
-          color="amber"
           density="compact"
           size="small"
           half-increments
+          class="rating-red"
         />
       </div>
 
@@ -74,12 +75,12 @@ export default {
           density="compact"
           hide-details
           rounded="lg"
-          bg-color="deep-purple-lighten-5"
+          bg-color="indigo-lighten-5"
           class="comment-input flex-grow-1"
         />
 
         <v-btn
-          color="deep-purple"
+          color="indigo"
           variant="tonal"
           icon="mdi-send"
           size="small"
@@ -95,6 +96,12 @@ export default {
   font-size: 12px;
 }
 .comment-item {
-  background: #ede7f6;
+  background: #e8eaf6;
+}
+.rating-red :deep(.v-btn) {
+  margin: 0 2px;
+}
+.rating-red :deep(.v-icon) {
+  color: #e53935 !important;
 }
 </style>

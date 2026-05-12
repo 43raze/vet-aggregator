@@ -22,8 +22,8 @@ export default {
   >
     <v-card-item class="pb-1">
       <template #prepend>
-        <v-avatar color="deep-purple-lighten-5" size="40">
-          <v-icon color="deep-purple" size="20">mdi-paw</v-icon>
+        <v-avatar color="indigo-lighten-5" size="40">
+          <v-icon color="indigo" size="20">mdi-paw</v-icon>
         </v-avatar>
       </template>
 
@@ -40,33 +40,33 @@ export default {
       </p>
 
       <div class="d-flex align-center ga-1 mb-1">
-        <v-icon size="15" color="deep-purple-lighten-2">
-          mdi-phone-outline
-        </v-icon>
+        <v-icon size="15" color="indigo-lighten-2">mdi-phone-outline</v-icon>
+
         <span class="text-caption">{{ clinic.phone }}</span>
       </div>
 
       <div class="d-flex align-center ga-1 mb-1">
-        <v-icon size="15" color="deep-purple-lighten-2">
-          mdi-email-outline
-        </v-icon>
+        <v-icon size="15" color="indigo-lighten-2">mdi-email-outline</v-icon>
+
         <span class="text-caption">{{ clinic.email }}</span>
       </div>
 
       <div class="d-flex align-center ga-1 mb-1">
-        <v-icon size="15" color="deep-purple-lighten-2">mdi-web</v-icon>
+        <v-icon size="15" color="indigo-lighten-2">mdi-web</v-icon>
+
         <span class="text-caption">{{ clinic.website }}</span>
       </div>
 
       <div class="d-flex align-center ga-1 mt-2">
         <v-rating
           :model-value="Number(clinic.rank)"
-          color="amber"
           density="compact"
           size="small"
           readonly
           half-increments
+          class="rating-red"
         />
+
         <span class="text-caption text-medium-emphasis">{{ clinic.rank }}</span>
       </div>
     </v-card-text>
@@ -84,7 +84,10 @@ export default {
     box-shadow 0.2s;
   background: #fff;
 }
-.ad-card:hover {
-  box-shadow: 0 8px 24px rgba(103, 58, 183, 0.1) !important;
+.rating-red :deep(.v-btn) {
+  margin: 0 2px;
+}
+.rating-red :deep(.v-icon) {
+  color: #e53935 !important;
 }
 </style>

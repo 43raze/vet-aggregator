@@ -2,10 +2,12 @@
 import TheHeader from './components/TheHeader.vue'
 import FilterPanel from './components/FilterPanel.vue'
 import ClinicCard from './components/ClinicCard.vue'
+import ClinicForm from './components/ClinicForm.vue'
 export default {
-  components: { TheHeader, FilterPanel, ClinicCard },
+  components: { TheHeader, FilterPanel, ClinicCard, ClinicForm },
   data() {
     return {
+      dialog: false,
       list: [
         {
           id: 1,
@@ -27,17 +29,15 @@ export default {
       ],
     }
   },
-
-
 }
 </script>
 
 <template>
   <v-app class="app-bg">
-    <TheHeader />
+    <TheHeader @add="dialog = true" />
 
     <v-main class="fill-height">
-      <v-container class="fill-height pa-4" fluid>
+      <v-container class="fill-height pa-4">
         <v-row class="fill-height ma-0">
           <v-col cols="3" class="d-flex flex-column">
             <FilterPanel />
@@ -53,6 +53,10 @@ export default {
         </v-row>
       </v-container>
     </v-main>
+
+    <v-dialog v-model="dialog" max-width="560">
+      <ClinicForm @close="dialog = false" />
+    </v-dialog>
   </v-app>
 </template>
 
