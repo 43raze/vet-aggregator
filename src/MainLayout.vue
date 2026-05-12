@@ -1,10 +1,9 @@
 <script>
 import TheHeader from './components/TheHeader.vue'
-import TheFilterPanel from './components/TheFilterPanel.vue'
+import FilterPanel from './components/FilterPanel.vue'
 import ClinicCard from './components/ClinicCard.vue'
-
 export default {
-  components: { TheHeader, TheFilterPanel, ClinicCard },
+  components: { TheHeader, FilterPanel, ClinicCard },
   data() {
     return {
       list: [
@@ -28,6 +27,8 @@ export default {
       ],
     }
   },
+
+
 }
 </script>
 
@@ -39,7 +40,7 @@ export default {
       <v-container class="fill-height pa-4" fluid>
         <v-row class="fill-height ma-0">
           <v-col cols="3" class="d-flex flex-column">
-            <TheFilterPanel />
+            <FilterPanel />
           </v-col>
 
           <v-col cols="9" class="overflow-y-auto">

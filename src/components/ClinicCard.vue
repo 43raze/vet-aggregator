@@ -1,8 +1,8 @@
 <script>
-import TheCommentSection from './TheCommentSection.vue'
+import CommentSection from './CommentSection.vue'
 
 export default {
-  components: { TheCommentSection },
+  components: { CommentSection },
 
   props: {
     clinic: {
@@ -26,6 +26,7 @@ export default {
           <v-icon color="deep-purple" size="20">mdi-paw</v-icon>
         </v-avatar>
       </template>
+
       <v-card-title class="text-body-1 font-weight-bold">
         {{ clinic.title }}
       </v-card-title>
@@ -39,16 +40,16 @@ export default {
       </p>
 
       <div class="d-flex align-center ga-1 mb-1">
-        <v-icon size="15" color="deep-purple-lighten-2"
-          >mdi-phone-outline</v-icon
-        >
+        <v-icon size="15" color="deep-purple-lighten-2">
+          mdi-phone-outline
+        </v-icon>
         <span class="text-caption">{{ clinic.phone }}</span>
       </div>
 
       <div class="d-flex align-center ga-1 mb-1">
-        <v-icon size="15" color="deep-purple-lighten-2"
-          >mdi-email-outline</v-icon
-        >
+        <v-icon size="15" color="deep-purple-lighten-2">
+          mdi-email-outline
+        </v-icon>
         <span class="text-caption">{{ clinic.email }}</span>
       </div>
 
@@ -72,7 +73,7 @@ export default {
 
     <v-divider />
 
-    <TheCommentSection :comments="clinic.comments" />
+    <CommentSection :comments="clinic.comments" />
   </v-card>
 </template>
 

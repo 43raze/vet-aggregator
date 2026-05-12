@@ -37,6 +37,7 @@ export default {
             comment.author
           }}</span>
         </div>
+
         <v-rating
           v-if="comment.rank"
           :model-value="comment.rank"
@@ -47,6 +48,7 @@ export default {
           half-increments
         />
       </div>
+
       <p class="text-caption text-medium-emphasis mb-0">
         {{ comment.text }}
       </p>

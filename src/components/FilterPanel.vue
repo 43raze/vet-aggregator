@@ -11,14 +11,14 @@ export default {}
     <p class="text-caption mb-1 text-deep-purple-lighten-1">Вид тварини</p>
     <v-chip-group class="mb-3">
       <v-chip value="dog" variant="tonal" color="deep-purple" size="small"
-        >Собаки</v-chip
-      >
+        >Собаки
+      </v-chip>
       <v-chip value="cat" variant="tonal" color="deep-purple" size="small"
-        >Коти</v-chip
-      >
+        >Коти
+      </v-chip>
       <v-chip value="other" variant="tonal" color="deep-purple" size="small"
-        >Інші</v-chip
-      >
+        >Інші
+      </v-chip>
     </v-chip-group>
 
     <p class="text-caption mb-1 text-deep-purple-lighten-1">Днів передержки</p>
