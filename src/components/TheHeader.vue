@@ -7,13 +7,11 @@ export default {
 <template>
   <v-app-bar flat color="indigo-darken-3" height="68">
     <v-container class="d-flex align-center ga-4 px-4">
-      <div class="d-flex align-center ga-2">
-        <v-avatar color="cyan-lighten-3" size="38">
-          <v-icon color="indigo-darken-3" size="20">mdi-paw</v-icon>
-        </v-avatar>
+      <v-avatar color="cyan-lighten-3" size="38">
+        <v-icon color="indigo-darken-3" size="20">mdi-paw</v-icon>
+      </v-avatar>
 
-        <span class="text-h6 font-weight-bold text-white">ВетАгрегатор</span>
-      </div>
+      <span class="text-h6 font-weight-bold text-white">Vet Search</span>
 
       <v-form class="flex-grow-1 search-form">
         <div class="search-box">
