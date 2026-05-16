@@ -31,19 +31,19 @@ let isIncludes = (clinic, filters) =>
   filters.overstayDaysFrom <= clinic.overstayDays &&
   clinic.overstayDays <= filters.overstayDaysTo
 
-let isIncludesAnimalsKinds = (clinic, filters) =>
-  clinic.animalsKinds.some(kind => filters.animalsKinds.includes(kind))
-
-let isIncludesRank = (clinic, filters) =>
-  filters.rankFrom <= clinic.rank && clinic.rank <= filters.rankTo
-
 function filtrateClinicsByOverstayDays(clinics, filters) {
   return clinics.filter(c => isIncludes(c, filters))
 }
 
+let isIncludesAnimalsKinds = (clinic, filters) =>
+  clinic.animalsKinds.some(kind => filters.animalsKinds.includes(kind))
+
 function filtrateClinicsByAnimalsKinds(clinics, filters) {
   return clinics.filter(c => isIncludesAnimalsKinds(c, filters))
 }
+
+let isIncludesRank = (clinic, filters) =>
+  filters.rankFrom <= clinic.rank && clinic.rank <= filters.rankTo
 
 function filtrateClinicsByRank(clinics, filters) {
   return clinics.filter(c => isIncludesRank(c, filters))

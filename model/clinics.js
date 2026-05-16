@@ -2,26 +2,6 @@ import { getClinicRankById } from './comments.js'
 
 export const clinics = []
 
-export function editClinic(id, dto) {
-  const clinic = clinics.find(c => c.id === id)
-  if (!clinic) return
-  Object.assign(clinic, dto)
-}
-
-export function deleteClinic(id) {
-  const index = clinics.findIndex(c => c.id === id)
-  if (index === -1) return
-  clinics.splice(index, 1)
-}
-
-export function getClinics() {
-  return clinics
-}
-
-export function getClinicById(id) {
-  return clinics.find(c => c.id === id)
-}
-
 function createClinic(dto) {
   const id = Math.trunc(Math.random() * 10000)
   return {
@@ -35,9 +15,29 @@ function createClinic(dto) {
   }
 }
 
-function addClinic(dto) {
+export function addClinic(dto) {
   const clinic = createClinic(dto)
   clinics.push(clinic)
+}
+
+export function getClinics() {
+  return clinics
+}
+
+export function getClinicById(id) {
+  return clinics.find(c => c.id === id)
+}
+
+export function editClinic(id, dto) {
+  const clinic = clinics.find(c => c.id === id)
+  if (!clinic) return
+  Object.assign(clinic, dto)
+}
+
+export function deleteClinic(id) {
+  const index = clinics.findIndex(c => c.id === id)
+  if (index === -1) return
+  clinics.splice(index, 1)
 }
 
 addClinic({

@@ -1,25 +1,5 @@
 export const comments = []
 
-export function editComment(id, dto) {
-  const comment = getCommentById(id)
-  if (!comment) return
-  Object.assign(comment, dto)
-}
-
-export function deleteComment(id) {
-  const index = comments.findIndex(c => c.id === id)
-  if (index === -1) return
-  comments.splice(index, 1)
-}
-
-export function getComments() {
-  return comments
-}
-
-export function getCommentById(id) {
-  return comments.find(c => c.id === id)
-}
-
 function createComment(dto) {
   return {
     id: Math.trunc(Math.random() * 10000),
@@ -30,6 +10,26 @@ function createComment(dto) {
 export function addComment(dto) {
   const comment = createComment(dto)
   comments.push(comment)
+}
+
+export function getComments() {
+  return comments
+}
+
+export function getCommentById(id) {
+  return comments.find(c => c.id === id)
+}
+
+export function editComment(id, dto) {
+  const comment = getCommentById(id)
+  if (!comment) return
+  Object.assign(comment, dto)
+}
+
+export function deleteComment(id) {
+  const index = comments.findIndex(c => c.id === id)
+  if (index === -1) return
+  comments.splice(index, 1)
 }
 
 export function getClinicRankById(clinicId) {
