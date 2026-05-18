@@ -1,6 +1,29 @@
 <script>
 export default {
-  emits: ['close'],
+  emits: ['close', 'submit'],
+
+  data() {
+    return {
+      kindList: ['Собака', 'Кіт', 'Папуга', 'Кролик'],
+      form: {
+        title: '',
+        description: '',
+        phone: '',
+        email: '',
+        address: '',
+        city: '',
+        district: '',
+        animals: [],
+        website: '',
+      },
+    }
+  },
+
+  methods: {
+    handleSubmit() {
+      this.$emit('submit', { ...this.form })
+    },
+  },
 }
 </script>
 
@@ -24,6 +47,8 @@ export default {
         prepend-inner-icon="mdi-hospital-building"
         variant="outlined"
         density="compact"
+        :model-value="form.title"
+        @update:model-value="form.title = $event"
       />
 
       <v-textarea
@@ -33,6 +58,8 @@ export default {
         density="compact"
         rows="3"
         auto-grow
+        :model-value="form.description"
+        @update:model-value="form.description = $event"
       />
 
       <v-text-field
@@ -40,6 +67,8 @@ export default {
         prepend-inner-icon="mdi-phone-outline"
         variant="outlined"
         density="compact"
+        :model-value="form.phone"
+        @update:model-value="form.phone = $event"
       />
 
       <v-text-field
@@ -47,6 +76,8 @@ export default {
         prepend-inner-icon="mdi-email-outline"
         variant="outlined"
         density="compact"
+        :model-value="form.email"
+        @update:model-value="form.email = $event"
       />
 
       <v-text-field
@@ -54,6 +85,17 @@ export default {
         prepend-inner-icon="mdi-map-marker-outline"
         variant="outlined"
         density="compact"
+        :model-value="form.address"
+        @update:model-value="form.address = $event"
+      />
+
+      <v-text-field
+        label="Вебсайт"
+        prepend-inner-icon="mdi-web"
+        variant="outlined"
+        density="compact"
+        :model-value="form.website"
+        @update:model-value="form.website = $event"
       />
 
       <div class="d-flex ga-3">
@@ -62,19 +104,33 @@ export default {
           prepend-inner-icon="mdi-city"
           variant="outlined"
           density="compact"
+          :model-value="form.city"
+          @update:model-value="form.city = $event"
         />
-        <v-text-field label="Район" variant="outlined" density="compact" />
+        <v-text-field
+          label="Район"
+          variant="outlined"
+          density="compact"
+          :model-value="form.district"
+          @update:model-value="form.district = $event"
+        />
       </div>
 
       <div>
         <p class="text-caption text-medium-emphasis mb-1">Тварини</p>
         <div class="d-flex flex-wrap ga-2">
           <v-checkbox
-            v-for="kind in ['Собака', 'Кіт', 'Папуга', 'Кролик']"
+            v-for="kind in kindList"
             :key="kind"
             :label="kind"
             density="compact"
             hide-details
+            :model-value="form.animals.includes(kind)"
+            @update:model-value="
+              $event
+                ? form.animals.push(kind)
+                : form.animals.splice(form.animals.indexOf(kind), 1)
+            "
           />
         </div>
       </div>
@@ -87,7 +143,7 @@ export default {
       <v-btn variant="text" color="medium-emphasis" @click="$emit('close')">
         Скасувати
       </v-btn>
-      <v-btn variant="flat" color="indigo">Додати</v-btn>
+      <v-btn variant="flat" color="indigo" @click="handleSubmit">Додати</v-btn>
     </v-card-actions>
   </v-card>
 </template>

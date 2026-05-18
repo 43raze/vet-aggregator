@@ -3,8 +3,11 @@ import TheHeader from './components/TheHeader.vue'
 import FilterPanel from './components/FilterPanel.vue'
 import ClinicCard from './components/ClinicCard.vue'
 import ClinicForm from './components/ClinicForm.vue'
+import { createClinic } from '../model/clinics.js'
+
 export default {
   components: { TheHeader, FilterPanel, ClinicCard, ClinicForm },
+
   data() {
     return {
       dialog: false,
@@ -28,6 +31,25 @@ export default {
         },
       ],
     }
+  },
+
+  methods: {
+    addClinic(form) {
+      this.list.push(
+        createClinic({
+          title: form.title,
+          description: form.description,
+          phone: form.phone,
+          email: form.email,
+          address: form.address,
+          city: form.city,
+          district: form.district,
+          animalsKinds: form.animals,
+          website: form.website,
+        }),
+      )
+      this.dialog = false
+    },
   },
 }
 </script>
@@ -55,7 +77,7 @@ export default {
     </v-main>
 
     <v-dialog v-model="dialog" max-width="560">
-      <ClinicForm @close="dialog = false" />
+      <ClinicForm @close="dialog = false" @submit="addClinic" />
     </v-dialog>
   </v-app>
 </template>

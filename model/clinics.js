@@ -2,7 +2,7 @@ import { getClinicRankById } from './comments.js'
 
 export const clinics = []
 
-function createClinic(dto) {
+export function createClinic(dto) {
   const id = Math.trunc(Math.random() * 10000)
   return {
     id,
