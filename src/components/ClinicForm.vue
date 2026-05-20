@@ -1,10 +1,13 @@
 <script>
+// ClinicModalForm
+
 export default {
   emits: ['close', 'submit'],
 
   data() {
     return {
       kindList: ['Собака', 'Кіт', 'Папуга', 'Кролик'],
+      newClinic: {},
       form: {
         title: '',
         description: '',
@@ -16,12 +19,19 @@ export default {
         animals: [],
         website: '',
       },
+      rules: [
+        value => !!value || 'Required.',
+        value => (value && value.length >= 3) || 'Min 3 characters',
+      ],
     }
   },
 
   methods: {
     handleSubmit() {
       this.$emit('submit', { ...this.form })
+    },
+    validateClinic() {
+      //
     },
   },
 }
@@ -72,6 +82,9 @@ export default {
       />
 
       <v-text-field
+        :rules="rules"
+        aria-autocomplete="none"
+        hint="Enter your Email to access this website"
         label="Email"
         prepend-inner-icon="mdi-email-outline"
         variant="outlined"

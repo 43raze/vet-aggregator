@@ -10,7 +10,9 @@ export default {
 
   data() {
     return {
+      isShowClinicModalForm: false,
       dialog: false,
+      clinics: [],
       list: [
         {
           id: 1,
@@ -34,6 +36,7 @@ export default {
   },
 
   methods: {
+    // addClinic(clinicDto) {
     addClinic(form) {
       this.list.push(
         createClinic({
