@@ -31,7 +31,11 @@ export default {
         {{ clinic.title }}
       </v-card-title>
 
-      <v-card-subtitle>{{ clinic.animal }}</v-card-subtitle>
+      <v-card-subtitle>
+        <v-chip v-for="kind in clinic.animalsKinds" :key="kind" size="x-small">
+          {{ kind }}
+        </v-chip>
+      </v-card-subtitle>
     </v-card-item>
 
     <v-card-text class="pt-2 pb-1 flex-grow-1">

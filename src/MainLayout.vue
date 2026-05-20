@@ -17,7 +17,7 @@ export default {
           title: 'Ветеринарна клініка «Лапки»',
           description:
             'Повний спектр ветеринарних послуг. Досвідчені лікарі, сучасне обладнання. Працюємо 24/7.',
-          rank: '4.8',
+          rank: 4.8,
           phone: '+38 (044) 123-45-67',
           email: 'lapki@vet.ua',
           website: 'lapki-vet.ua',
@@ -26,8 +26,8 @@ export default {
             { author: 'Максим', text: 'Швидко та професійно.', rank: 4 },
           ],
           photos: [],
-          animal: 'Собака',
-          hotelDays: 0,
+          animalsKinds: ['Собака'],
+          overstayDays: 0,
         },
       ],
     }
@@ -48,6 +48,7 @@ export default {
           website: form.website,
         }),
       )
+
       this.dialog = false
     },
   },
