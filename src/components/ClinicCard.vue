@@ -10,6 +10,22 @@ export default {
       required: true,
     },
   },
+
+  data() {
+    return {
+      isShowComments: false,
+    }
+  },
+
+  computed: {
+    contacts() {
+      return [
+        { icon: 'mdi-phone-outline', value: this.clinic.phone },
+        { icon: 'mdi-email-outline', value: this.clinic.email },
+        { icon: 'mdi-web', value: this.clinic.website },
+      ].filter(contact => !!contact.value)
+    },
+  },
 }
 </script>
 
@@ -43,22 +59,16 @@ export default {
         {{ clinic.description }}
       </p>
 
-      <div class="d-flex align-center ga-1 mb-1">
-        <v-icon size="15" color="indigo-lighten-2">mdi-phone-outline</v-icon>
+      <div class="d-flex flex-column ga-1">
+        <div
+          v-for="contact in contacts"
+          :key="contact.icon"
+          class="d-flex align-center ga-1 text-caption"
+        >
+          <v-icon size="15" color="indigo-lighten-2">{{ contact.icon }}</v-icon>
 
-        <span class="text-caption">{{ clinic.phone }}</span>
-      </div>
-
-      <div class="d-flex align-center ga-1 mb-1">
-        <v-icon size="15" color="indigo-lighten-2">mdi-email-outline</v-icon>
-
-        <span class="text-caption">{{ clinic.email }}</span>
-      </div>
-
-      <div class="d-flex align-center ga-1 mb-1">
-        <v-icon size="15" color="indigo-lighten-2">mdi-web</v-icon>
-
-        <span class="text-caption">{{ clinic.website }}</span>
+          {{ contact.value }}
+        </div>
       </div>
 
       <div class="d-flex align-center ga-1 mt-2">
@@ -77,7 +87,21 @@ export default {
 
     <v-divider />
 
-    <CommentSection :comments="clinic.comments" />
+    <v-card-actions class="px-4 py-2">
+      <v-btn
+        variant="text"
+        color="indigo"
+        size="small"
+        :prepend-icon="
+          isShowComments ? 'mdi-chevron-up' : 'mdi-comment-outline'
+        "
+        @click="isShowComments = !isShowComments"
+      >
+        Коментарі ({{ clinic.comments?.length ?? 0 }})
+      </v-btn>
+    </v-card-actions>
+
+    <CommentSection v-show="isShowComments" :comments="clinic.comments" />
   </v-card>
 </template>
 

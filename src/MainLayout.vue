@@ -2,18 +2,17 @@
 import TheHeader from './components/TheHeader.vue'
 import FilterPanel from './components/FilterPanel.vue'
 import ClinicCard from './components/ClinicCard.vue'
-import ClinicForm from './components/ClinicForm.vue'
+import ClinicModalForm from './components/ClinicModalForm.vue'
 import { createClinic } from '../model/clinics.js'
 
 export default {
-  components: { TheHeader, FilterPanel, ClinicCard, ClinicForm },
+  components: { TheHeader, FilterPanel, ClinicCard, ClinicModalForm },
 
   data() {
     return {
       isShowClinicModalForm: false,
-      dialog: false,
-      clinics: [],
-      list: [
+
+      clinics: [
         {
           id: 1,
           title: 'Ветеринарна клініка «Лапки»',
@@ -36,23 +35,22 @@ export default {
   },
 
   methods: {
-    // addClinic(clinicDto) {
-    addClinic(form) {
-      this.list.push(
+    addClinic(clinicDto) {
+      this.clinics.push(
         createClinic({
-          title: form.title,
-          description: form.description,
-          phone: form.phone,
-          email: form.email,
-          address: form.address,
-          city: form.city,
-          district: form.district,
-          animalsKinds: form.animals,
-          website: form.website,
+          title: clinicDto.title,
+          description: clinicDto.description,
+          phone: clinicDto.phone,
+          email: clinicDto.email,
+          address: clinicDto.address,
+          city: clinicDto.city,
+          district: clinicDto.district,
+          animalsKinds: clinicDto.animals,
+          website: clinicDto.website,
         }),
       )
 
-      this.dialog = false
+      this.isShowClinicModalForm = false
     },
   },
 }
@@ -60,7 +58,7 @@ export default {
 
 <template>
   <v-app class="app-bg">
-    <TheHeader @add="dialog = true" />
+    <TheHeader @add="isShowClinicModalForm = true" />
 
     <v-main class="fill-height">
       <v-container class="fill-height pa-4">
@@ -71,7 +69,7 @@ export default {
 
           <v-col cols="9" class="overflow-y-auto">
             <v-row>
-              <v-col v-for="clinic in list" :key="clinic.id" cols="12">
+              <v-col v-for="clinic in clinics" :key="clinic.id" cols="12">
                 <ClinicCard :clinic="clinic" />
               </v-col>
             </v-row>
@@ -80,8 +78,8 @@ export default {
       </v-container>
     </v-main>
 
-    <v-dialog v-model="dialog" max-width="560">
-      <ClinicForm @close="dialog = false" @submit="addClinic" />
+    <v-dialog v-model="isShowClinicModalForm" max-width="560">
+      <ClinicModalForm @close="isShowClinicModalForm = false" @submit="addClinic" />
     </v-dialog>
   </v-app>
 </template>

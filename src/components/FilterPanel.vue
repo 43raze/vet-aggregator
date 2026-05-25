@@ -1,5 +1,15 @@
 <script>
-export default {}
+export default {
+  data() {
+    return {
+      animalKinds: [
+        { label: 'Собаки', icon: 'mdi-dog' },
+        { label: 'Коти', icon: 'mdi-cat' },
+        { label: 'Інші', icon: 'mdi-rabbit' },
+      ],
+    }
+  },
+}
 </script>
 
 <template>
@@ -9,22 +19,21 @@ export default {}
     </p>
 
     <p class="text-caption mb-1 text-indigo-lighten-1">Вид тварини</p>
-    <v-chip-group class="mb-3">
-      <v-chip value="dog" variant="tonal" color="indigo" size="small">
-        Собаки
-      </v-chip>
-
-      <v-chip value="cat" variant="tonal" color="indigo" size="small">
-        Коти
-      </v-chip>
-
-      <v-chip value="other" variant="tonal" color="indigo" size="small">
-        Інші
+    <v-chip-group multiple column class="mb-3 chip-group">
+      <v-chip
+        v-for="kind in animalKinds"
+        :key="kind.label"
+        :prepend-icon="kind.icon"
+        variant="tonal"
+        color="indigo"
+        size="small"
+        filter
+      >
+        {{ kind.label }}
       </v-chip>
     </v-chip-group>
 
     <p class="text-caption mb-1 text-indigo-lighten-1">Днів передержки</p>
-
     <v-slider
       min="0"
       max="30"
@@ -41,3 +50,9 @@ export default {}
     </v-btn>
   </v-card>
 </template>
+
+<style scoped>
+.chip-group :deep(.v-slide-group__content) {
+  justify-content: center;
+}
+</style>
