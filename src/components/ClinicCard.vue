@@ -11,6 +11,8 @@ export default {
     },
   },
 
+  emits: ['add-comment'],
+
   data() {
     return {
       isShowComments: false,
@@ -24,6 +26,12 @@ export default {
         { icon: 'mdi-email-outline', value: this.clinic.email },
         { icon: 'mdi-web', value: this.clinic.website },
       ].filter(contact => !!contact.value)
+    },
+  },
+
+  methods: {
+    onAddComment(comment) {
+      this.$emit('add-comment', { clinicId: this.clinic.id, ...comment })
     },
   },
 }
@@ -101,7 +109,11 @@ export default {
       </v-btn>
     </v-card-actions>
 
-    <CommentSection v-show="isShowComments" :comments="clinic.comments" />
+    <CommentSection
+      v-show="isShowComments"
+      :comments="clinic.comments"
+      @add-comment="onAddComment"
+    />
   </v-card>
 </template>
 

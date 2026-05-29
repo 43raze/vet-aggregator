@@ -52,6 +52,13 @@ export default {
 
       this.isShowClinicModalForm = false
     },
+
+    addComment({ clinicId, author, text, rank }) {
+      const clinic = this.clinics.find(c => c.id === clinicId)
+
+      if (!clinic) return
+      clinic.comments.push({ author, text, rank })
+    },
   },
 }
 </script>
@@ -70,7 +77,7 @@ export default {
           <v-col cols="9" class="overflow-y-auto">
             <v-row>
               <v-col v-for="clinic in clinics" :key="clinic.id" cols="12">
-                <ClinicCard :clinic="clinic" />
+                <ClinicCard :clinic="clinic" @add-comment="addComment" />
               </v-col>
             </v-row>
           </v-col>
@@ -79,7 +86,10 @@ export default {
     </v-main>
 
     <v-dialog v-model="isShowClinicModalForm" max-width="560">
-      <ClinicModalForm @close="isShowClinicModalForm = false" @submit="addClinic" />
+      <ClinicModalForm
+        @close="isShowClinicModalForm = false"
+        @submit="addClinic"
+      />
     </v-dialog>
   </v-app>
 </template>

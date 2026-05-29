@@ -7,11 +7,30 @@ export default {
     },
   },
 
+  emits: ['add-comment'],
+
   data() {
     return {
+      newAuthor: '',
       newText: '',
       newRank: 0,
     }
+  },
+
+  methods: {
+    submit() {
+      if (!this.newText.trim()) return
+
+      this.$emit('add-comment', {
+        author: this.newAuthor.trim() || 'Анонім',
+        text: this.newText.trim(),
+        rank: this.newRank,
+      })
+
+      this.newAuthor = ''
+      this.newText = ''
+      this.newRank = 0
+    },
   },
 }
 </script>
@@ -56,6 +75,18 @@ export default {
     </div>
 
     <div class="mt-2">
+      <v-text-field
+        v-model="newAuthor"
+        placeholder="Ваше ім'я (необов'язково)"
+        variant="outlined"
+        density="compact"
+        hide-details
+        rounded="lg"
+        bg-color="indigo-lighten-5"
+        class="comment-input mb-2"
+        prepend-inner-icon="mdi-account-outline"
+      />
+
       <div class="d-flex align-center ga-1 mb-1">
         <span class="text-caption text-medium-emphasis">Оцінка:</span>
         <v-rating
@@ -77,6 +108,7 @@ export default {
           rounded="lg"
           bg-color="indigo-lighten-5"
           class="comment-input flex-grow-1"
+          @keyup.enter="submit"
         />
 
         <v-btn
@@ -85,6 +117,8 @@ export default {
           icon="mdi-send"
           size="small"
           rounded="circle"
+          :disabled="!newText.trim()"
+          @click="submit"
         />
       </div>
     </div>
