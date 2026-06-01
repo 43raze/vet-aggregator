@@ -4,7 +4,7 @@ export default {
 
   data() {
     return {
-      kindList: ['Собака', 'Кіт', 'Папуга', 'Кролик'],
+      kindList: ['Собака', 'Кіт', 'Інші'],
 
       newClinic: {
         title: '',
@@ -13,9 +13,7 @@ export default {
         email: '',
         address: '',
         city: '',
-        district: '',
         animals: [],
-        website: '',
       },
 
       rules: [
@@ -42,27 +40,32 @@ export default {
 </script>
 
 <template>
-  <v-card rounded="xl" border elevation="0" max-width="560">
-    <v-card-item>
-      <template #prepend>
-        <v-avatar color="indigo-lighten-5" size="40">
-          <v-icon color="indigo" size="20">mdi-plus</v-icon>
-        </v-avatar>
-      </template>
-
+  <v-card rounded="xl" border elevation="0" max-width="560" class="modal-card">
+    <v-card-item class="py-3">
       <v-card-title class="text-body-1 font-weight-bold">
         Додати клініку
       </v-card-title>
+
+      <template #append>
+        <v-btn
+          icon="mdi-close"
+          variant="text"
+          size="small"
+          color="medium-emphasis"
+          @click="$emit('close')"
+        />
+      </template>
     </v-card-item>
 
     <v-form ref="form">
-      <v-card-text class="d-flex flex-column ga-3">
+      <v-card-text class="d-flex flex-column ga-2 py-2">
         <v-text-field
           v-model="newClinic.title"
           label="Назва клініки"
           prepend-inner-icon="mdi-hospital-building"
           variant="outlined"
           density="compact"
+          hide-details="auto"
           :rules="rules"
         />
 
@@ -72,8 +75,8 @@ export default {
           prepend-inner-icon="mdi-text"
           variant="outlined"
           density="compact"
-          rows="3"
-          auto-grow
+          rows="2"
+          hide-details="auto"
           :rules="rules"
         />
 
@@ -83,6 +86,7 @@ export default {
           prepend-inner-icon="mdi-phone-outline"
           variant="outlined"
           density="compact"
+          hide-details="auto"
           :rules="rules"
         />
 
@@ -92,6 +96,17 @@ export default {
           prepend-inner-icon="mdi-email-outline"
           variant="outlined"
           density="compact"
+          hide-details="auto"
+          :rules="rules"
+        />
+
+        <v-text-field
+          v-model="newClinic.city"
+          label="Місто"
+          prepend-inner-icon="mdi-city"
+          variant="outlined"
+          density="compact"
+          hide-details="auto"
           :rules="rules"
         />
 
@@ -101,36 +116,12 @@ export default {
           prepend-inner-icon="mdi-map-marker-outline"
           variant="outlined"
           density="compact"
+          hide-details="auto"
           :rules="rules"
         />
 
-        <v-text-field
-          v-model="newClinic.website"
-          label="Вебсайт"
-          prepend-inner-icon="mdi-web"
-          variant="outlined"
-          density="compact"
-        />
-
-        <div class="d-flex ga-3">
-          <v-text-field
-            v-model="newClinic.city"
-            label="Місто"
-            prepend-inner-icon="mdi-city"
-            variant="outlined"
-            density="compact"
-            :rules="rules"
-          />
-          <v-text-field
-            v-model="newClinic.district"
-            label="Район"
-            variant="outlined"
-            density="compact"
-          />
-        </div>
-
         <div>
-          <p class="text-caption text-medium-emphasis mb-1">Тварини</p>
+          <p class="text-caption text-medium-emphasis ma-0">Тварини</p>
           <div class="d-flex flex-wrap ga-2">
             <v-checkbox
               v-for="kind in kindList"
@@ -152,12 +143,22 @@ export default {
 
     <v-divider />
 
-    <v-card-actions class="pa-4">
-      <v-spacer />
-      <v-btn variant="text" color="medium-emphasis" @click="$emit('close')">
-        Скасувати
+    <v-card-actions class="pa-3">
+      <v-btn
+        icon="mdi-plus"
+        variant="flat"
+        color="indigo-lighten-5"
+        size="40"
+        @click="handleSubmit"
+      >
+        <v-icon color="indigo" size="24">mdi-plus</v-icon>
       </v-btn>
-      <v-btn variant="flat" color="indigo" @click="handleSubmit">Додати</v-btn>
     </v-card-actions>
   </v-card>
 </template>
+
+<style scoped>
+.modal-card {
+  overflow: hidden;
+}
+</style>

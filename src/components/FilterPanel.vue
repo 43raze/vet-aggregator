@@ -45,6 +45,10 @@ export default {
 
     <v-divider class="my-3" />
 
+    <v-btn block variant="flat" color="indigo" rounded="lg" size="small" class="mb-2">
+      Застосувати фільтр
+    </v-btn>
+
     <v-btn block variant="outlined" color="indigo" rounded="lg" size="small">
       Скинути
     </v-btn>

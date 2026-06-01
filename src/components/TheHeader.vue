@@ -5,16 +5,19 @@ export default {
 </script>
 
 <template>
-  <v-app-bar flat color="indigo-darken-3" height="68">
-    <v-container class="d-flex align-center ga-4 px-4">
-      <v-avatar color="cyan-lighten-3" size="38">
-        <v-icon color="indigo-darken-3" size="20">mdi-paw</v-icon>
-      </v-avatar>
+  <v-app-bar flat color="indigo-darken-3" height="60">
+    <v-container class="d-flex align-center ga-4">
+      <a href="/" class="d-flex align-center ga-2 logo-link">
+        <v-avatar color="cyan-lighten-3" size="38">
+          <v-icon color="indigo-darken-3" size="20">mdi-paw</v-icon>
+        </v-avatar>
+        <span class="text-h6 font-weight-bold text-white d-none d-sm-inline">Vet Search</span>
+      </a>
 
-      <span class="text-h6 font-weight-bold text-white">Vet Search</span>
+      <v-spacer />
 
-      <v-form class="flex-grow-1 search-form">
-        <div class="search-box">
+      <div class="d-flex align-center ga-3">
+        <v-form class="search-form" @submit.prevent>
           <v-text-field
             placeholder="Пошук оголошень..."
             variant="outlined"
@@ -24,48 +27,41 @@ export default {
             bg-color="indigo-darken-2"
             base-color="cyan-lighten-3"
             color="white"
-            class="search-input"
+            append-inner-icon="mdi-magnify"
           />
+        </v-form>
 
-          <v-btn
-            class="search-btn"
-            type="submit"
-            icon="mdi-magnify"
-            variant="plain"
-            :ripple="false"
-            color="cyan-lighten-3"
-          />
-        </div>
-      </v-form>
-
-      <v-spacer />
-
-      <v-btn
-        color="cyan-lighten-3"
-        variant="tonal"
-        rounded="lg"
-        prepend-icon="mdi-plus"
-        @click="$emit('add')"
-      >
-        Додати
-      </v-btn>
+        <v-btn
+          color="cyan-lighten-3"
+          variant="tonal"
+          rounded="lg"
+          icon="mdi-plus"
+          class="d-flex d-sm-none"
+          @click="$emit('add')"
+        />
+        <v-btn
+          color="cyan-lighten-3"
+          variant="tonal"
+          rounded="lg"
+          prepend-icon="mdi-plus"
+          class="d-none d-sm-flex"
+          @click="$emit('add')"
+        >
+          Додати
+        </v-btn>
+      </div>
     </v-container>
   </v-app-bar>
 </template>
 
 <style scoped>
+.logo-link {
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
 .search-form {
-  max-width: 500px;
-}
-
-.search-box {
-  position: relative;
-}
-
-.search-btn {
-  position: absolute;
-  right: 4px;
-  top: 50%;
-  transform: translateY(-50%);
+  width: 100%;
+  max-width: 760px;
 }
 </style>
