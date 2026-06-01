@@ -13,14 +13,7 @@ export default {
     <v-container
       class="d-flex flex-column flex-sm-row align-center ga-2 py-3"
     >
-      <div class="d-flex align-center">
-        <v-avatar color="cyan-lighten-3" size="28" class="mr-2">
-          <v-icon color="indigo-darken-3" size="14">mdi-paw</v-icon>
-        </v-avatar>
-        <span class="text-body-2 font-weight-bold text-white">Vet Search</span>
-      </div>
-
-      <div class="d-flex justify-center flex-wrap ga-1 mx-sm-4">
+      <div class="d-flex justify-center flex-wrap ga-1">
         <v-btn
           v-for="link in links"
           :key="link"

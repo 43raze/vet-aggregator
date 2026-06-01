@@ -4,6 +4,7 @@ import TheFooter from './components/TheFooter.vue'
 import FilterPanel from './components/FilterPanel.vue'
 import ClinicCard from './components/ClinicCard.vue'
 import ClinicModalForm from './components/ClinicModalForm.vue'
+import ClinicDetails from './views/ClinicDetails.vue'
 
 export default {
   components: {
@@ -12,6 +13,7 @@ export default {
     FilterPanel,
     ClinicCard,
     ClinicModalForm,
+    ClinicDetails,
   },
 
   data() {
@@ -112,6 +114,7 @@ export default {
                 <ClinicCard :clinic="clinic" @add-comment="addComment" />
               </v-col>
             </v-row>
+            <ClinicDetails v-if="false" />
           </v-col>
         </v-row>
       </v-container>
