@@ -7,6 +7,12 @@ const router = createRouter({
     {
       path: '/',
       component: MainLayout,
+      // children: [
+      //   {
+      //     path: '/',
+      //     component: C,
+      //   },
+      // ],
     },
   ],
 })
