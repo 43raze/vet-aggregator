@@ -85,6 +85,19 @@ export default {
       width="300"
     >
       <div class="pa-4 d-flex flex-column fill-height">
+        <div class="d-flex align-center justify-space-between mb-3">
+          <span class="text-subtitle-1 font-weight-bold text-indigo-darken-2">
+            Фільтри
+          </span>
+          <v-btn
+            icon="mdi-close"
+            variant="text"
+            size="small"
+            color="medium-emphasis"
+            @click="isFilterOpen = false"
+          />
+        </div>
+
         <FilterPanel />
       </div>
     </v-navigation-drawer>
