@@ -1,5 +1,5 @@
 <script>
-import CommentSection from './CommentSection.vue'
+import CommentSection from '@/components/comment/CommentSection.vue'
 
 export default {
   components: { CommentSection },

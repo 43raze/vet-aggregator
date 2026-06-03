@@ -1,6 +1,6 @@
 <script>
-import CommentSubmitter from './CommentSubmitter.vue'
-import CommentList from './CommentList.vue'
+import CommentSubmitter from '@/components/comment/CommentSubmitter.vue'
+import CommentList from '@/components/comment/CommentList.vue'
 
 export default {
   components: { CommentSubmitter, CommentList },

@@ -1,10 +1,10 @@
 <script>
-import TheHeader from './components/TheHeader.vue'
-import TheFooter from './components/TheFooter.vue'
-import FilterPanel from './components/FilterPanel.vue'
-import ClinicCard from './components/ClinicCard.vue'
-import ClinicModalForm from './components/ClinicModalForm.vue'
-import ClinicDetails from './views/ClinicDetails.vue'
+import TheHeader from '@/components/layout/TheHeader.vue'
+import TheFooter from '@/components/layout/TheFooter.vue'
+import FilterPanel from '@/components/clinic/FilterPanel.vue'
+import ClinicCard from '@/components/clinic/ClinicCard.vue'
+import ClinicModalForm from '@/components/clinic/ClinicModalForm.vue'
+import ClinicDetails from '@/pages/ClinicDetails.vue'
 
 export default {
   components: {

@@ -31,7 +31,7 @@ export default {
 </script>
 
 <template>
-  <div class="mt-2">
+  <v-form class="mt-2" @submit.prevent="submit">
     <v-text-field
       v-model.trim="newAuthor"
       placeholder="Ваше ім'я (необов'язково)"
@@ -65,17 +65,16 @@ export default {
         rounded="lg"
         bg-color="indigo-lighten-5"
         class="comment-input flex-grow-1"
-        @keyup.enter="submit"
       />
       <v-btn
+        type="submit"
         color="indigo"
         variant="tonal"
         icon="mdi-send"
         size="small"
         rounded="circle"
         :disabled="!newText.trim()"
-        @click="submit"
       />
     </div>
-  </div>
+  </v-form>
 </template>

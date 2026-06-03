@@ -1,5 +1,5 @@
 <script>
-import CommentSubmitter from './CommentSubmitter.vue'
+import CommentSubmitter from '@/components/comment/CommentSubmitter.vue'
 
 export default {
   components: { CommentSubmitter },
