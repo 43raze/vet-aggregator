@@ -1,0 +1,11 @@
+.rating-red .v-btn,
+.rating-grey .v-btn {
+  margin: 0 4px;
+}
+.rating-red .v-icon {
+  color: #e53935 !important;
+}
+.rating-grey .v-icon {
+  color: #bdbdbd !important;
+  opacity: 1 !important;
+}
