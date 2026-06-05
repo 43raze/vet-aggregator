@@ -135,6 +135,7 @@ export default {
 
     <CommentSection
       v-show="isShowComments"
+      :clinic-id="clinic.id"
       :comments="clinic.comments"
       @add-comment="onAddComment"
     />

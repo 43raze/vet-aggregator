@@ -10,6 +10,9 @@ export default {
       type: Array,
       default: () => [],
     },
+    clinicId: {
+      type: Number,
+    },
   },
 
   emits: ['add-comment'],
@@ -25,6 +28,9 @@ export default {
 
     <CommentList :comments />
 
-    <CommentSubmitter @comment-submitted="$emit('add-comment', $event)" />
+    <CommentSubmitter
+      :clinicId
+      @comment-submitted="$emit('add-comment', $event)"
+    />
   </v-card-text>
 </template>

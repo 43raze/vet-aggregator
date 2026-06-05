@@ -1,19 +1,26 @@
 <script>
 export default {
+  props: ['clinicId'],
+
   emits: ['comment-submitted'],
 
   data() {
     return {
-      localComment: {
-        id: Math.trunc(Math.random() * 10000),
-        author: '',
-        text: '',
-        rank: 0,
-      },
+      localComment: this.createClinic(),
     }
   },
 
   methods: {
+    createClinic() {
+      return {
+        id: Math.trunc(Math.random() * 10000),
+        author: '',
+        text: '',
+        rank: 0,
+        clinicId: this.clinicId,
+      }
+    },
+
     submit() {
       if (!this.localComment.text.trim() && !this.localComment.rank) return
 
@@ -22,12 +29,7 @@ export default {
         author: this.localComment.author || 'Анонім',
       })
 
-      this.localComment = {
-        id: Math.trunc(Math.random() * 10000),
-        author: '',
-        text: '',
-        rank: 0,
-      }
+      this.localComment = this.createClinic()
     },
   },
 }
