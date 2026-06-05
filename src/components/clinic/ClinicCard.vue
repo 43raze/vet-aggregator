@@ -89,18 +89,19 @@ export default {
             half-increments
             class="rating-red"
           />
-          <span class="text-caption text-medium-emphasis">{{
-            clinic.rank
-          }}</span>
+          <span class="text-caption text-medium-emphasis">
+            {{ clinic.rank }}
+          </span>
         </template>
 
         <template v-else>
           <v-icon v-for="i in 5" :key="i" size="16" color="grey-lighten-1">
             mdi-star-outline
           </v-icon>
-          <span class="text-caption text-medium-emphasis ml-1"
-            >Немає оцінок</span
-          >
+
+          <span class="text-caption text-medium-emphasis ml-1">
+            Немає оцінок
+          </span>
         </template>
       </div>
     </v-card-text>

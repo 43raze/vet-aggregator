@@ -1,7 +1,7 @@
 <script>
 import TheHeader from '@/components/layout/TheHeader.vue'
 import TheFooter from '@/components/layout/TheFooter.vue'
-import FilterPanel from '@/components/clinic/FilterPanel.vue'
+import ClinicFilterPanel from '@/components/clinic/ClinicFilterPanel.vue'
 import ClinicCard from '@/components/clinic/ClinicCard.vue'
 import ClinicModalForm from '@/components/clinic/ClinicModalForm.vue'
 import ClinicDetails from '@/pages/ClinicDetails.vue'
@@ -10,7 +10,7 @@ export default {
   components: {
     TheHeader,
     TheFooter,
-    FilterPanel,
+    ClinicFilterPanel,
     ClinicCard,
     ClinicModalForm,
     ClinicDetails,
@@ -32,8 +32,8 @@ export default {
           email: 'lapki@vet.ua',
           website: 'lapki-vet.ua',
           comments: [
-            { author: 'Анна', text: 'Чудова клініка, дякую лікарям!', rank: 5 },
-            { author: 'Максим', text: 'Швидко та професійно.', rank: 4 },
+            { id: 1, author: 'Анна', text: 'Чудова клініка, дякую лікарям!', rank: 5 },
+            { id: 2, author: 'Максим', text: 'Швидко та професійно.', rank: 4 },
           ],
           photos: [],
           animalsKinds: ['Собака'],
@@ -65,10 +65,10 @@ export default {
       this.isShowClinicModalForm = false
     },
 
-    addComment({ clinicId, author, text, rank }) {
+    addComment({ clinicId, ...comment }) {
       const clinic = this.clinics.find(c => c.id === clinicId)
       if (!clinic) return
-      clinic.comments.push({ author, text, rank })
+      clinic.comments.push(comment)
     },
   },
 }
@@ -98,7 +98,7 @@ export default {
           />
         </div>
 
-        <FilterPanel />
+        <ClinicFilterPanel />
       </div>
     </v-navigation-drawer>
 
@@ -118,7 +118,7 @@ export default {
 
         <v-row class="ma-0">
           <v-col cols="12" md="4" class="d-none d-md-flex flex-column pa-2">
-            <FilterPanel />
+            <ClinicFilterPanel />
           </v-col>
 
           <v-col cols="12" md="8" class="pa-2">

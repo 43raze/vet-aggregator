@@ -9,10 +9,10 @@ export default {
   },
 
   methods: {
-    addComment({ clinicId, author, text, rank }) {
+    addComment({ clinicId, ...comment }) {
       const clinic = this.clinics.find(c => c.id === clinicId)
       if (!clinic) return
-      clinic.comments.push({ author, text, rank })
+      clinic.comments.push(comment)
     },
   },
 }

@@ -11,7 +11,7 @@ export default {
 <template>
   <div
     v-for="comment in comments"
-    :key="comment.author"
+    :key="comment.id"
     class="comment-item pa-2 rounded-lg mb-1 d-flex align-center justify-space-between ga-2"
   >
     <div class="d-flex align-center ga-1 flex-grow-1 min-width-0">

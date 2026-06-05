@@ -4,27 +4,30 @@ export default {
 
   data() {
     return {
-      // localComment: {}
-      // id: где ты ?
-      newAuthor: '',
-      newText: '',
-      newRank: 0,
+      localComment: {
+        id: Math.trunc(Math.random() * 10000),
+        author: '',
+        text: '',
+        rank: 0,
+      },
     }
   },
 
   methods: {
     submit() {
-      if (!this.newText.trim()) return
+      if (!this.localComment.text.trim() && !this.localComment.rank) return
 
       this.$emit('comment-submitted', {
-        author: this.newAuthor || 'Анонім',
-        text: this.newText,
-        rank: this.newRank,
+        ...this.localComment,
+        author: this.localComment.author || 'Анонім',
       })
 
-      this.newAuthor = ''
-      this.newText = ''
-      this.newRank = 0
+      this.localComment = {
+        id: Math.trunc(Math.random() * 10000),
+        author: '',
+        text: '',
+        rank: 0,
+      }
     },
   },
 }
@@ -33,7 +36,7 @@ export default {
 <template>
   <v-form class="mt-2" @submit.prevent="submit">
     <v-text-field
-      v-model.trim="newAuthor"
+      v-model.trim="localComment.author"
       placeholder="Ваше ім'я (необов'язково)"
       variant="outlined"
       density="compact"
@@ -47,7 +50,7 @@ export default {
     <div class="d-flex align-center ga-1 mb-1">
       <span class="text-caption text-medium-emphasis">Оцінка:</span>
       <v-rating
-        v-model.number="newRank"
+        v-model.number="localComment.rank"
         density="compact"
         size="x-small"
         half-increments
@@ -57,7 +60,7 @@ export default {
 
     <div class="d-flex align-center ga-2">
       <v-text-field
-        v-model.trim="newText"
+        v-model.trim="localComment.text"
         placeholder="Написати коментар..."
         variant="outlined"
         density="compact"
@@ -73,7 +76,7 @@ export default {
         icon="mdi-send"
         size="small"
         rounded="circle"
-        :disabled="!newText.trim()"
+        :disabled="!localComment.text.trim() && !localComment.rank"
       />
     </div>
   </v-form>

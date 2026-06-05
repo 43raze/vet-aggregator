@@ -15,8 +15,8 @@ export default {
         address: 'вул. Хрещатик, 1',
         animalsKinds: ['Собака', 'Кіт'],
         comments: [
-          { author: 'Анна', text: 'Чудова клініка, дякую лікарям!', rank: 5 },
-          { author: 'Максим', text: 'Швидко та професійно.', rank: 4 },
+          { id: 1, author: 'Анна', text: 'Чудова клініка, дякую лікарям!', rank: 5 },
+          { id: 2, author: 'Максим', text: 'Швидко та професійно.', rank: 4 },
         ],
       },
     }
@@ -117,7 +117,7 @@ export default {
 
             <div
               v-for="comment in clinic.comments"
-              :key="comment.author"
+              :key="comment.id"
               class="comment-item pa-2 rounded-lg mb-2 d-flex align-center justify-space-between ga-2"
             >
               <div class="d-flex align-center ga-2">
