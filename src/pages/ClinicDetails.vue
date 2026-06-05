@@ -89,7 +89,7 @@ export default {
             </p>
 
             <p class="text-subtitle-2 font-weight-bold mb-2">Контакти</p>
-            <v-row dense>
+            <v-row density="comfortable">
               <v-col
                 v-for="contact in contacts"
                 :key="contact.label"

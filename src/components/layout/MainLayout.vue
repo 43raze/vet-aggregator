@@ -32,7 +32,12 @@ export default {
           email: 'lapki@vet.ua',
           website: 'lapki-vet.ua',
           comments: [
-            { id: 1, author: 'Анна', text: 'Чудова клініка, дякую лікарям!', rank: 5 },
+            {
+              id: 1,
+              author: 'Анна',
+              text: 'Чудова клініка, дякую лікарям!',
+              rank: 5,
+            },
             { id: 2, author: 'Максим', text: 'Швидко та професійно.', rank: 4 },
           ],
           photos: [],
