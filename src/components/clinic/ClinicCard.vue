@@ -25,6 +25,8 @@ export default {
         { icon: 'mdi-phone-outline', value: this.clinic.phone },
         { icon: 'mdi-email-outline', value: this.clinic.email },
         { icon: 'mdi-web', value: this.clinic.website },
+        { icon: 'mdi-city', value: this.clinic.city },
+        { icon: 'mdi-map-marker-outline', value: this.clinic.address },
       ].filter(contact => !!contact.value)
     },
   },
