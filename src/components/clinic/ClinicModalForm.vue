@@ -13,7 +13,7 @@ export default {
         email: '',
         address: '',
         city: '',
-        animals: [],
+        animalsKinds: [],
       },
 
       rules: [
@@ -129,11 +129,11 @@ export default {
               :label="kind"
               density="compact"
               hide-details
-              :model-value="newClinic.animals.includes(kind)"
+              :model-value="newClinic.animalsKinds.includes(kind)"
               @update:model-value="
                 $event
-                  ? newClinic.animals.push(kind)
-                  : newClinic.animals.splice(newClinic.animals.indexOf(kind), 1)
+                  ? newClinic.animalsKinds.push(kind)
+                  : newClinic.animalsKinds.splice(newClinic.animalsKinds.indexOf(kind), 1)
               "
             />
           </div>

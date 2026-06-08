@@ -6,12 +6,12 @@ export default {
 
   data() {
     return {
-      localComment: this.createClinic(),
+      localComment: this.createComment(),
     }
   },
 
   methods: {
-    createClinic() {
+    createComment() {
       return {
         id: Math.trunc(Math.random() * 10000),
         author: '',
@@ -29,7 +29,7 @@ export default {
         author: this.localComment.author || 'Анонім',
       })
 
-      this.localComment = this.createClinic()
+      this.localComment = this.createComment()
     },
   },
 }
