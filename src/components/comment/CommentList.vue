@@ -19,12 +19,13 @@ export default {
         <v-icon size="12" color="indigo">mdi-account</v-icon>
       </v-avatar>
 
-      <span class="text-caption font-weight-medium text-no-wrap">{{
-        comment.author
-      }}</span>
-      <span class="text-caption text-medium-emphasis comment-text">{{
-        comment.text
-      }}</span>
+      <span class="text-caption font-weight-medium text-no-wrap"
+        >{{ comment.author }}
+      </span>
+
+      <span class="text-caption text-medium-emphasis comment-text"
+        >{{ comment.text }}
+      </span>
     </div>
 
     <div class="d-flex align-center flex-shrink-0">
