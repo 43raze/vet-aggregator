@@ -1,11 +1,22 @@
 <script>
 export default {
+  props: {
+    closable: Boolean,
+  },
+
+  emits: ['close'],
+
   data() {
     return {
       animalKinds: [
         { label: 'Собаки', icon: 'mdi-dog' },
         { label: 'Коти', icon: 'mdi-cat' },
         { label: 'Інші', icon: 'mdi-rabbit' },
+      ],
+
+      actions: [
+        { label: 'Застосувати фільтр', variant: 'flat' },
+        { label: 'Скинути', variant: 'outlined' },
       ],
     }
   },
@@ -14,9 +25,20 @@ export default {
 
 <template>
   <v-card rounded="xl" border elevation="0" class="pa-4 flex-grow-1">
-    <p class="text-subtitle-2 font-weight-bold mb-3 text-indigo-darken-2">
-      Фільтри
-    </p>
+    <div class="d-flex align-center justify-space-between mb-3">
+      <p class="text-subtitle-2 font-weight-bold text-indigo-darken-2">
+        Фільтри
+      </p>
+
+      <v-btn
+        v-if="closable"
+        icon="mdi-close"
+        variant="text"
+        size="small"
+        color="medium-emphasis"
+        @click="$emit('close')"
+      />
+    </div>
 
     <p class="text-caption mb-1 text-indigo-lighten-1">Вид тварини</p>
     <v-chip-group multiple column class="mb-3 chip-group">
@@ -34,6 +56,7 @@ export default {
     </v-chip-group>
 
     <p class="text-caption mb-1 text-indigo-lighten-1">Днів передержки</p>
+
     <v-slider
       min="0"
       max="30"
@@ -45,12 +68,17 @@ export default {
 
     <v-divider class="my-3" />
 
-    <v-btn block variant="flat" color="indigo" rounded="lg" size="small" class="mb-2">
-      Застосувати фільтр
-    </v-btn>
-
-    <v-btn block variant="outlined" color="indigo" rounded="lg" size="small">
-      Скинути
+    <v-btn
+      v-for="action in actions"
+      :key="action.label"
+      :variant="action.variant"
+      :class="{ 'mb-2': action.variant === 'flat' }"
+      block
+      color="indigo"
+      rounded="lg"
+      size="small"
+    >
+      {{ action.label }}
     </v-btn>
   </v-card>
 </template>
