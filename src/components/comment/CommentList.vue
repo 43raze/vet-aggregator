@@ -19,25 +19,24 @@ export default {
         <v-icon size="12" color="indigo">mdi-account</v-icon>
       </v-avatar>
 
-      <span class="text-caption font-weight-medium text-no-wrap"
-        >{{ comment.author }}
+      <span class="text-caption font-weight-medium text-no-wrap">
+        {{ comment.author }}
       </span>
 
-      <span class="text-caption text-medium-emphasis comment-text"
-        >{{ comment.text }}
+      <span class="text-caption text-medium-emphasis comment-text">
+        {{ comment.text }}
       </span>
     </div>
 
-    <div class="d-flex align-center flex-shrink-0">
-      <v-rating
-        :model-value="comment.rank"
-        :length="5"
-        density="compact"
-        size="x-small"
-        readonly
-        half-increments
-        :class="comment.rank > 0 ? 'rating-red' : 'rating-grey'"
-      />
-    </div>
+    <v-rating
+      :model-value="comment.rank"
+      :length="5"
+      density="compact"
+      size="x-small"
+      readonly
+      half-increments
+      class="flex-shrink-0"
+      :class="comment.rank > 0 ? 'rating-red' : 'rating-grey'"
+    />
   </div>
 </template>

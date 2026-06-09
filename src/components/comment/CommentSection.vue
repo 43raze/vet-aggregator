@@ -10,6 +10,7 @@ export default {
       type: Array,
       default: () => [],
     },
+
     clinicId: {
       type: Number,
     },
