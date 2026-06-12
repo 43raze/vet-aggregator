@@ -40,3 +40,27 @@ export default {
     />
   </div>
 </template>
+
+<style scoped>
+.comment-item {
+  background: #e8eaf6;
+}
+.comment-text {
+  overflow-wrap: anywhere;
+}
+.min-width-0 {
+  min-width: 0;
+}
+
+.rating-red :deep(.v-btn),
+.rating-grey :deep(.v-btn) {
+  margin: 0 4px;
+}
+.rating-red :deep(.v-icon) {
+  color: #e53935 !important;
+}
+.rating-grey :deep(.v-icon) {
+  color: #bdbdbd !important;
+  opacity: 1 !important;
+}
+</style>

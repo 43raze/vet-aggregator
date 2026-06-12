@@ -83,3 +83,16 @@ export default {
     </div>
   </v-form>
 </template>
+
+<style scoped>
+.comment-input {
+  font-size: 12px;
+}
+
+.rating-red :deep(.v-btn) {
+  margin: 0 4px;
+}
+.rating-red :deep(.v-icon) {
+  color: #e53935 !important;
+}
+</style>
