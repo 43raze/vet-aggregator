@@ -24,16 +24,11 @@ export default {
   },
 
   methods: {
-    handleSubmit() {
-      if (!this.validateClinic()) return
-      this.$emit('submit', { ...this.newClinic })
-    },
+    async handleSubmit() {
+      const { valid } = await this.$refs.form.validate()
+      if (!valid) return
 
-    validateClinic() {
-      const { title, description, phone, email, address, city } = this.newClinic
-      return (
-        !!title && !!description && !!phone && !!email && !!address && !!city
-      )
+      this.$emit('submit', { ...this.newClinic })
     },
   },
 }

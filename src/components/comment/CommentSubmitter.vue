@@ -10,6 +10,17 @@ export default {
     }
   },
 
+  computed: {
+    commentRules() {
+      return [
+        () =>
+          !!this.localComment.text.trim() ||
+          !!this.localComment.rank ||
+          'Напишіть коментар або поставте оцінку',
+      ]
+    },
+  },
+
   methods: {
     createComment() {
       return {
@@ -21,8 +32,9 @@ export default {
       }
     },
 
-    submit() {
-      if (!this.localComment.text.trim() && !this.localComment.rank) return
+    async submit() {
+      const { valid } = await this.$refs.form.validate()
+      if (!valid) return
 
       this.$emit('comment-submitted', {
         ...this.localComment,
@@ -30,13 +42,14 @@ export default {
       })
 
       this.localComment = this.createComment()
+      this.$refs.form.resetValidation()
     },
   },
 }
 </script>
 
 <template>
-  <v-form class="mt-2" @submit.prevent="submit">
+  <v-form ref="form" class="mt-2" @submit.prevent="submit">
     <v-text-field
       v-model.trim="localComment.author"
       placeholder="Ваше ім'я (необов'язково)"
@@ -56,6 +69,7 @@ export default {
         density="compact"
         size="x-small"
         half-increments
+        clearable
         class="rating-red"
       />
     </div>
@@ -66,10 +80,11 @@ export default {
         placeholder="Написати коментар..."
         variant="outlined"
         density="compact"
-        hide-details
+        hide-details="auto"
         rounded="lg"
         bg-color="indigo-lighten-5"
         class="comment-input flex-grow-1"
+        :rules="commentRules"
       />
       <v-btn
         type="submit"
@@ -78,7 +93,6 @@ export default {
         icon="mdi-send"
         size="small"
         rounded="circle"
-        :disabled="!localComment.text.trim() && !localComment.rank"
       />
     </div>
   </v-form>
