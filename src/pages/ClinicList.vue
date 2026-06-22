@@ -10,9 +10,10 @@ export default {
 
   methods: {
     addComment({ clinicId, ...comment }) {
-      const clinic = this.clinics.find(c => c.id === clinicId)
-      if (!clinic) return
-      clinic.comments.push(comment)
+      // const clinic = this.clinics.find(c => c.id === clinicId)
+      // if (!clinic) return
+      // clinic.comments.push(comment)
+      this.emit('comment-added', { clinicId, ...comment })
     },
   },
 }

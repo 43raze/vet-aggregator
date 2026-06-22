@@ -4,6 +4,7 @@ import TheFooter from '@/components/layout/TheFooter.vue'
 import ClinicFilterPanel from '@/components/clinic/ClinicFilterPanel.vue'
 import ClinicCard from '@/components/clinic/ClinicCard.vue'
 import ClinicModalForm from '@/components/clinic/ClinicModalForm.vue'
+import ClinicList from '@/pages/ClinicList.vue'
 
 export default {
   components: {
@@ -12,6 +13,7 @@ export default {
     ClinicFilterPanel,
     ClinicCard,
     ClinicModalForm,
+    ClinicList,
   },
 
   data() {
@@ -77,7 +79,12 @@ export default {
   <v-app class="app-bg">
     <TheHeader @add="isShowClinicModalForm = true" />
 
-    <v-navigation-drawer v-model="isFilterOpen" temporary location="start" width="300">
+    <v-navigation-drawer
+      v-model="isFilterOpen"
+      temporary
+      location="start"
+      width="300"
+    >
       <ClinicFilterPanel closable @close="isFilterOpen = false" />
     </v-navigation-drawer>
 
@@ -94,21 +101,7 @@ export default {
           Фільтри
         </v-btn>
 
-        <v-row class="ma-0">
-          <v-col cols="12" md="4" class="d-none d-md-flex flex-column pa-2">
-            <ClinicFilterPanel />
-          </v-col>
-
-          <v-col cols="12" md="8" class="pa-2">
-            <ClinicCard
-              v-for="clinic in clinics"
-              :key="clinic.id"
-              :clinic="clinic"
-              class="mb-3"
-              @add-comment="addComment"
-            />
-          </v-col>
-        </v-row>
+        <ClinicList :clinics @comment-added="addComment" />
       </v-container>
     </v-main>
 

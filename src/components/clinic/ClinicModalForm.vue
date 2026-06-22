@@ -1,4 +1,6 @@
 <script>
+import { nullColor } from 'vuetify/components/VColorPicker/util'
+
 export default {
   emits: ['close', 'submit'],
 
@@ -30,6 +32,17 @@ export default {
 
       this.$emit('submit', { ...this.newClinic })
     },
+  },
+
+  unmounted() {
+    localStorage.setItem('newClinic', JSON.stringify(this.newClinic))
+  },
+
+  mounted() {
+    const newClinic = localStorage.getItem('newClinic')
+    if (newClinic && newClinic !== '[object Object]') {
+      this.newClinic = JSON.parse(newClinic)
+    }
   },
 }
 </script>
@@ -128,7 +141,10 @@ export default {
               @update:model-value="
                 $event
                   ? newClinic.animalsKinds.push(kind)
-                  : newClinic.animalsKinds.splice(newClinic.animalsKinds.indexOf(kind), 1)
+                  : newClinic.animalsKinds.splice(
+                      newClinic.animalsKinds.indexOf(kind),
+                      1,
+                    )
               "
             />
           </div>
