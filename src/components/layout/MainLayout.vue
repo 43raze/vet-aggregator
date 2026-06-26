@@ -2,7 +2,6 @@
 import TheHeader from '@/components/layout/TheHeader.vue'
 import TheFooter from '@/components/layout/TheFooter.vue'
 import ClinicFilterPanel from '@/components/clinic/ClinicFilterPanel.vue'
-import ClinicCard from '@/components/clinic/ClinicCard.vue'
 import ClinicModalForm from '@/components/clinic/ClinicModalForm.vue'
 import ClinicList from '@/pages/ClinicList.vue'
 
@@ -11,7 +10,6 @@ export default {
     TheHeader,
     TheFooter,
     ClinicFilterPanel,
-    ClinicCard,
     ClinicModalForm,
     ClinicList,
   },
