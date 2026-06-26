@@ -18,58 +18,10 @@ export default {
     return {
       isShowClinicModalForm: false,
       isFilterOpen: false,
-
-      clinics: [
-        {
-          id: 1,
-          title: 'Ветеринарна клініка «Лапки»',
-          description:
-            'Повний спектр ветеринарних послуг. Досвідчені лікарі, сучасне обладнання. Працюємо 24/7.',
-          rank: 4.8,
-          phone: '+38 (044) 123-45-67',
-          email: 'lapki@vet.ua',
-          website: 'lapki-vet.ua',
-          city: 'Київ',
-          address: 'вул. Хрещатик, 1',
-          comments: [
-            {
-              id: 1,
-              author: 'Анна',
-              text: 'Чудова клініка, дякую лікарям!',
-              rank: 5,
-            },
-            { id: 2, author: 'Максим', text: 'Швидко та професійно.', rank: 4 },
-          ],
-          photos: [],
-          animalsKinds: ['Собака'],
-          overstayDays: 0,
-        },
-      ],
     }
   },
 
-  methods: {
-    addClinic(clinicDto) {
-      this.clinics.push({
-        ...clinicDto,
-        id: Math.trunc(Math.random() * 10000),
-        rank: 0,
-        photos: [],
-        comments: [],
-        overstayDays: 0,
-        district: '',
-        website: '',
-      })
-
-      this.isShowClinicModalForm = false
-    },
-
-    addComment({ clinicId, ...comment }) {
-      const clinic = this.clinics.find(c => c.id === clinicId)
-      if (!clinic) return
-      clinic.comments.push(comment)
-    },
-  },
+  methods: {},
 }
 </script>
 
@@ -99,7 +51,7 @@ export default {
           Фільтри
         </v-btn>
 
-        <ClinicList :clinics @comment-added="addComment" />
+        <RouterView></RouterView>
       </v-container>
     </v-main>
 

@@ -7,6 +7,7 @@ export default {
   data() {
     return {
       localComment: this.createComment(),
+      valid: false,
     }
   },
 
@@ -32,24 +33,24 @@ export default {
       }
     },
 
-    async submit() {
-      const { valid } = await this.$refs.form.validate()
-      if (!valid) return
+    submit() {
+      if (!this.valid) return
 
       this.$emit('comment-submitted', {
         ...this.localComment,
         author: this.localComment.author || 'Анонім',
       })
 
+      this.$refs.form.reset()
+
       this.localComment = this.createComment()
-      this.$refs.form.resetValidation()
     },
   },
 }
 </script>
 
 <template>
-  <v-form ref="form" class="mt-2" @submit.prevent="submit">
+  <v-form ref="form" class="mt-2" @submit.prevent="submit" v-model="valid">
     <v-text-field
       v-model.trim="localComment.author"
       placeholder="Ваше ім'я (необов'язково)"

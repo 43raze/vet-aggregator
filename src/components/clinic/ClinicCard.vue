@@ -116,6 +116,7 @@ export default {
         color="indigo"
         size="small"
         prepend-icon="mdi-information-outline"
+        @click="$router.push('/details')"
       >
         Детальніше
       </v-btn>
