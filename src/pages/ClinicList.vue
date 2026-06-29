@@ -12,6 +12,8 @@ export default {
 
   data() {
     return {
+      isFilterOpen: false,
+
       clinics: [
         {
           id: 1,
@@ -68,9 +70,32 @@ export default {
 
 <template>
   <v-row class="ma-0">
+    <!-- Десктоп: фільтр у бічній колонці -->
     <v-col cols="12" md="4" class="d-none d-md-flex flex-column pa-2">
       <ClinicFilterPanel />
     </v-col>
+
+    <!-- Мобілка: кнопка + висувна шторка з тим самим фільтром -->
+    <v-btn
+      class="d-md-none ma-2"
+      variant="tonal"
+      color="indigo"
+      prepend-icon="mdi-filter-outline"
+      rounded="lg"
+      @click="isFilterOpen = true"
+    >
+      Фільтри
+    </v-btn>
+
+    <v-navigation-drawer
+      v-model="isFilterOpen"
+      temporary
+      location="start"
+      width="300"
+      class="d-md-none"
+    >
+      <ClinicFilterPanel closable @close="isFilterOpen = false" />
+    </v-navigation-drawer>
 
     <v-col cols="12" md="8" class="pa-2">
       <v-row>
@@ -78,6 +103,7 @@ export default {
           <ClinicCard :clinic="clinic" @add-comment="addComment" />
         </v-col>
       </v-row>
+
       <ClinicDetails v-if="false" />
     </v-col>
   </v-row>
