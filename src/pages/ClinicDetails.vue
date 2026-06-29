@@ -50,7 +50,7 @@ export default {
 </script>
 
 <template>
-  <v-container class="py-4" style="max-width: 880px">
+  <v-container fluid class="py-4" style="max-width: 1920px">
     <v-card rounded="xl" border elevation="0" class="pa-2">
       <v-card-item>
         <template #prepend>

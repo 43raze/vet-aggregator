@@ -6,7 +6,7 @@ export default {
 
 <template>
   <v-app-bar flat color="indigo-darken-3" height="60">
-    <v-container class="d-flex align-center ga-4">
+    <v-container fluid class="d-flex align-center ga-4" style="max-width: 1920px">
       <a href="/" class="d-flex align-center ga-2 logo-link">
         <v-avatar color="cyan-lighten-3" size="38">
           <v-icon color="indigo-darken-3" size="20">mdi-paw</v-icon>

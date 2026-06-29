@@ -27,7 +27,7 @@ export default {
     <TheHeader @add="isShowClinicModalForm = true" />
 
     <v-main class="app-main">
-      <v-container class="pa-3 pa-sm-4">
+      <v-container fluid class="pa-3 pa-sm-4" style="max-width: 1920px">
         <RouterView></RouterView>
       </v-container>
     </v-main>

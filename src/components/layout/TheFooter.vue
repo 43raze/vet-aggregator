@@ -11,7 +11,9 @@ export default {
 <template>
   <v-footer color="indigo-darken-3" class="py-0 footer-bar">
     <v-container
+      fluid
       class="d-flex flex-column flex-sm-row align-center ga-2 py-3"
+      style="max-width: 1920px"
     >
       <div class="d-flex justify-center flex-wrap ga-1">
         <v-btn
