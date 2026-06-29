@@ -33,13 +33,8 @@ export default {
     </v-main>
 
     <TheFooter />
-
-    <v-dialog v-model="isShowClinicModalForm" max-width="560">
-      <ClinicModalForm
-        @close="isShowClinicModalForm = false"
-        @submit="addClinic"
-      />
-    </v-dialog>
+    <!-- @submit="addClinic" -->
+    <ClinicModalForm v-model="isShowClinicModalForm" />
   </v-app>
 </template>
 
