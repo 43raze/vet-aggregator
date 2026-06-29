@@ -70,12 +70,10 @@ export default {
 
 <template>
   <v-row class="ma-0">
-    <!-- Десктоп: фільтр у бічній колонці -->
     <v-col cols="12" md="4" class="d-none d-md-flex flex-column pa-2">
       <ClinicFilterPanel />
     </v-col>
 
-    <!-- Мобілка: кнопка + висувна шторка з тим самим фільтром -->
     <v-btn
       class="d-md-none ma-2"
       variant="tonal"
