@@ -16,7 +16,7 @@ export default {
 
       <v-spacer />
 
-      <div class="d-flex align-center ga-3">
+      <div class="d-flex align-center ga-3 right-group">
         <v-form class="search-form" @submit.prevent>
           <v-text-field
             placeholder="Пошук оголошень..."
@@ -61,7 +61,7 @@ export default {
 }
 
 .search-form {
-  width: 100%;
-  max-width: 760px;
+  width: 360px;
+  max-width: 100%;
 }
 </style>
