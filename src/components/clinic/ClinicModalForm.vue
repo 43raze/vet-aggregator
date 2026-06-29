@@ -1,6 +1,4 @@
 <script>
-import { nullColor } from 'vuetify/components/VColorPicker/util'
-
 export default {
   emits: ['close', 'submit'],
 
