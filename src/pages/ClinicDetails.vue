@@ -27,6 +27,12 @@ export default {
     }
   },
 
+  methods: {
+    goBack() {
+      this.$router.push('/')
+    },
+  },
+
   computed: {
     contacts() {
       return [
@@ -51,6 +57,16 @@ export default {
 
 <template>
   <v-container fluid class="py-4" style="max-width: 1920px">
+    <v-btn
+      variant="text"
+      color="indigo"
+      prepend-icon="mdi-arrow-left"
+      class="mb-3"
+      @click="goBack"
+    >
+      Назад
+    </v-btn>
+
     <v-card rounded="xl" border elevation="0" class="pa-2">
       <v-card-item>
         <template #prepend>
