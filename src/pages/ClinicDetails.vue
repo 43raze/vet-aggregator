@@ -56,7 +56,7 @@ export default {
 </script>
 
 <template>
-  <v-container fluid class="py-4" style="max-width: 1920px">
+  <v-container class="py-4">
     <v-btn
       variant="text"
       color="indigo"
