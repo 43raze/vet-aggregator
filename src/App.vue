@@ -7,5 +7,5 @@ export default {
 </script>
 
 <template>
-  <MainLayout></MainLayout>
+  <MainLayout />
 </template>

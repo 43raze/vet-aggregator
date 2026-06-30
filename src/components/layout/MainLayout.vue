@@ -28,7 +28,7 @@ export default {
 
     <v-main class="app-main">
       <v-container fluid class="pa-3 pa-sm-4" style="max-width: 1920px">
-        <RouterView></RouterView>
+        <RouterView />
       </v-container>
     </v-main>
 
