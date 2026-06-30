@@ -2,13 +2,19 @@
 import ClinicCard from '@/components/clinic/ClinicCard.vue'
 import ClinicFilterPanel from '@/components/clinic/ClinicFilterPanel.vue'
 import ClinicDetails from '@/pages/ClinicDetails.vue'
+import ClinicSubmitterModal from '@/components/clinic/ClinicSubmitterModal.vue'
 
 export default {
   components: {
     ClinicCard,
     ClinicFilterPanel,
     ClinicDetails,
+    ClinicSubmitterModal,
   },
+
+  props: ['isModalOpen'],
+
+  emits: ['update:isModalOpen'],
 
   data() {
     return {
@@ -56,7 +62,7 @@ export default {
         website: '',
       })
 
-      this.isShowClinicModalForm = false
+      this.$emit('update:isModalOpen', false)
     },
 
     addComment({ clinicId, ...comment }) {
@@ -70,7 +76,7 @@ export default {
 
 <template>
   <v-row class="ma-0">
-    <v-col cols="12" md="4" class="d-none d-md-flex flex-column pa-2">
+    <v-col cols="12" md="4" lg="3" class="d-none d-md-flex flex-column pa-2">
       <ClinicFilterPanel />
     </v-col>
 
@@ -95,7 +101,7 @@ export default {
       <ClinicFilterPanel closable @close="isFilterOpen = false" />
     </v-navigation-drawer>
 
-    <v-col cols="12" md="8" class="pa-2">
+    <v-col cols="12" md="8" lg="9" class="pa-2">
       <v-row>
         <v-col v-for="clinic in clinics" :key="clinic.id" cols="12">
           <ClinicCard :clinic="clinic" @add-comment="addComment" />
@@ -104,5 +110,11 @@ export default {
 
       <ClinicDetails v-if="false" />
     </v-col>
+
+    <ClinicSubmitterModal
+      :model-value="isModalOpen"
+      @update:model-value="$emit('update:isModalOpen', $event)"
+      @submit="addClinic"
+    />
   </v-row>
 </template>

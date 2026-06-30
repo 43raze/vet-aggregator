@@ -1,14 +1,12 @@
 <script>
 import TheHeader from '@/components/layout/TheHeader.vue'
 import TheFooter from '@/components/layout/TheFooter.vue'
-import ClinicSubmitterModal from '@/components/clinic/ClinicSubmitterModal.vue'
 import ClinicList from '@/pages/ClinicList.vue'
 
 export default {
   components: {
     TheHeader,
     TheFooter,
-    ClinicSubmitterModal,
     ClinicList,
   },
 
@@ -28,13 +26,11 @@ export default {
 
     <v-main class="app-main">
       <v-container class="pa-3 pa-sm-4">
-        <RouterView />
+        <RouterView v-model:is-modal-open="isShowClinicModalForm" />
       </v-container>
     </v-main>
 
     <TheFooter />
-    <!-- @submit="addClinic" -->
-    <ClinicSubmitterModal v-model="isShowClinicModalForm" />
   </v-app>
 </template>
 
