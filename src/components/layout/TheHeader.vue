@@ -11,10 +11,11 @@ export default {
         <v-avatar color="cyan-lighten-3" size="38">
           <v-icon color="indigo-darken-3" size="20">mdi-paw</v-icon>
         </v-avatar>
-        <span class="text-h6 font-weight-bold text-white d-none d-sm-inline">Vet Search</span>
-      </a>
 
-      <v-spacer />
+        <span class="text-h6 font-weight-bold text-white d-none d-sm-inline">
+          Vet Search
+        </span>
+      </a>
 
       <div class="d-flex align-center ga-3 right-group">
         <v-form class="search-form" @submit.prevent>
@@ -60,8 +61,15 @@ export default {
   flex-shrink: 0;
 }
 
+.right-group {
+  flex: 1 1 auto;
+  justify-content: flex-end;
+  min-width: 0;
+}
+
 .search-form {
-  width: 360px;
-  max-width: 100%;
+  flex: 1 1 auto;
+  max-width: 360px;
+  min-width: 0;
 }
 </style>
