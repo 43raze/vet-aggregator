@@ -17,8 +17,6 @@ const vuetify = createVuetify({
   },
 })
 
-console.log('good change!')
-
 const app = createApp(App)
 
 app.use(createPinia())
