@@ -75,46 +75,48 @@ export default {
 </script>
 
 <template>
-  <v-row class="ma-0">
-    <v-col cols="12" md="4" lg="3" class="d-none d-md-flex flex-column pa-2">
-      <ClinicFilterPanel />
-    </v-col>
+  <div>
+    <v-row class="ma-0">
+      <v-col cols="12" md="4" lg="3" class="d-none d-md-flex flex-column pa-2">
+        <ClinicFilterPanel />
+      </v-col>
 
-    <v-btn
-      class="d-md-none ma-2"
-      variant="tonal"
-      color="indigo"
-      prepend-icon="mdi-filter-outline"
-      rounded="lg"
-      @click="isFilterOpen = true"
-    >
-      Фільтри
-    </v-btn>
+      <v-btn
+        class="d-md-none ma-2"
+        variant="tonal"
+        color="indigo"
+        prepend-icon="mdi-filter-outline"
+        rounded="lg"
+        @click="isFilterOpen = true"
+      >
+        Фільтри
+      </v-btn>
 
-    <v-navigation-drawer
-      v-model="isFilterOpen"
-      temporary
-      location="start"
-      width="300"
-      class="d-md-none"
-    >
-      <ClinicFilterPanel closable @close="isFilterOpen = false" />
-    </v-navigation-drawer>
+      <v-navigation-drawer
+        v-model="isFilterOpen"
+        temporary
+        location="start"
+        width="300"
+        class="d-md-none"
+      >
+        <ClinicFilterPanel closable @close="isFilterOpen = false" />
+      </v-navigation-drawer>
 
-    <v-col cols="12" md="8" lg="9" class="pa-2">
-      <v-row>
-        <v-col v-for="clinic in clinics" :key="clinic.id" cols="12">
-          <ClinicCard :clinic="clinic" @add-comment="addComment" />
-        </v-col>
-      </v-row>
+      <v-col cols="12" md="8" lg="9" class="pa-2">
+        <v-row>
+          <v-col v-for="clinic in clinics" :key="clinic.id" cols="12">
+            <ClinicCard :clinic="clinic" @add-comment="addComment" />
+          </v-col>
+        </v-row>
 
-      <ClinicDetails v-if="false" />
-    </v-col>
+        <ClinicDetails v-if="false" />
+      </v-col>
+    </v-row>
 
     <ClinicSubmitterModal
       :model-value="isModalOpen"
       @update:model-value="$emit('update:isModalOpen', $event)"
       @submit="addClinic"
     />
-  </v-row>
+  </div>
 </template>
