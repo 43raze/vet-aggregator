@@ -7,17 +7,7 @@ export default {
   data() {
     return {
       kindList: ['Собака', 'Кіт', 'Інші'],
-
-      newClinic: {
-        title: '',
-        description: '',
-        phone: '',
-        email: '',
-        address: '',
-        city: '',
-        animalsKinds: [],
-      },
-
+      newClinic: this.createClinic(),
       rules: [
         value => !!value || "Поле обов'язкове.",
         value => (value && value.length >= 3) || 'Мінімум 3 символи',
@@ -29,8 +19,29 @@ export default {
     async handleSubmit() {
       const { valid } = await this.$refs.form.validate()
       if (!valid) return
-
       this.$emit('submit', { ...this.newClinic })
+      this.newClinic = this.createClinic()
+      this.$refs.form.resetValidation()
+    },
+
+    createClinic() {
+      return {
+        id: Math.trunc(Math.random() * 10000),
+        rank: 0,
+        photos: [],
+        comments: [],
+        overstayDays: 0,
+        district: '',
+        website: '',
+        //
+        title: '',
+        description: '',
+        phone: '',
+        email: '',
+        address: '',
+        city: '',
+        animalsKinds: [],
+      }
     },
   },
 

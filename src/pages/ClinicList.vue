@@ -1,16 +1,10 @@
 <script>
 import ClinicCard from '@/components/clinic/ClinicCard.vue'
 import ClinicFilterPanel from '@/components/clinic/ClinicFilterPanel.vue'
-import ClinicDetails from '@/pages/ClinicDetails.vue'
 import ClinicSubmitterModal from '@/components/clinic/ClinicSubmitterModal.vue'
 
 export default {
-  components: {
-    ClinicCard,
-    ClinicFilterPanel,
-    ClinicDetails,
-    ClinicSubmitterModal,
-  },
+  components: { ClinicCard, ClinicFilterPanel, ClinicSubmitterModal },
 
   props: ['isModalOpen'],
 
@@ -50,18 +44,8 @@ export default {
   },
 
   methods: {
-    addClinic(clinicDto) {
-      this.clinics.push({
-        ...clinicDto,
-        id: Math.trunc(Math.random() * 10000),
-        rank: 0,
-        photos: [],
-        comments: [],
-        overstayDays: 0,
-        district: '',
-        website: '',
-      })
-
+    addClinic(clinic) {
+      this.clinics.push(clinic)
       this.$emit('update:isModalOpen', false)
     },
 
@@ -108,8 +92,6 @@ export default {
             <ClinicCard :clinic="clinic" @add-comment="addComment" />
           </v-col>
         </v-row>
-
-        <ClinicDetails v-if="false" />
       </v-col>
     </v-row>
 
