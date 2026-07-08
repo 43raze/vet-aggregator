@@ -110,7 +110,7 @@ export default {
         color="indigo"
         size="small"
         prepend-icon="mdi-information-outline"
-        @click="$router.push('/details')"
+        @click="$router.push(`/details/${clinic.id}`)"
       >
         Детальніше
       </v-btn>

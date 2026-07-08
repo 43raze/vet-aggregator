@@ -1,30 +1,9 @@
 <script>
 export default {
+  props: ['clinics'],
+
   data() {
-    return {
-      clinic: {
-        id: 1,
-        title: 'Ветеринарна клініка «Лапки»',
-        description:
-          'Повний спектр ветеринарних послуг. Досвідчені лікарі, сучасне обладнання. Працюємо 24/7. Хірургія, стоматологія, вакцинація, лабораторна діагностика та стаціонар під наглядом досвідчених спеціалістів.',
-        rank: 4.8,
-        phone: '+38 (044) 123-45-67',
-        email: 'lapki@vet.ua',
-        website: 'lapki-vet.ua',
-        city: 'Київ',
-        address: 'вул. Хрещатик, 1',
-        animalsKinds: ['Собака', 'Кіт'],
-        comments: [
-          {
-            id: 1,
-            author: 'Анна',
-            text: 'Чудова клініка, дякую лікарям!',
-            rank: 5,
-          },
-          { id: 2, author: 'Максим', text: 'Швидко та професійно.', rank: 4 },
-        ],
-      },
-    }
+    return {}
   },
 
   methods: {
@@ -33,7 +12,18 @@ export default {
     },
   },
 
+  created() {
+    console.log('>>', this.clinics)
+    console.log('>>', this.clinics[0])
+  },
+
   computed: {
+    clinic() {
+      // console.log('>', this.clinics)
+      // return this.clinics[0]
+      return this.clinics.find(c => c.id === +this.$route.params.id)
+    },
+
     contacts() {
       return [
         {
@@ -78,6 +68,9 @@ export default {
         <v-card-title class="text-h6 font-weight-bold">
           {{ clinic.title }}
         </v-card-title>
+
+        <!-- <h1>{{ clinics }}</h1> -->
+        <!-- <h1>{{ $route.params.id }}</h1> -->
 
         <v-card-subtitle class="d-flex flex-wrap ga-1 mt-1">
           <v-chip

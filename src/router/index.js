@@ -11,7 +11,7 @@ const router = createRouter({
       component: ClinicList,
     },
     {
-      path: '/details',
+      path: '/details/:id',
       component: ClinicDetails,
     },
   ],
