@@ -30,12 +30,6 @@ export default {
       ].filter(contact => !!contact.value)
     },
   },
-
-  methods: {
-    onAddComment(comment) {
-      this.$emit('add-comment', { clinicId: this.clinic.id, ...comment })
-    },
-  },
 }
 </script>
 
@@ -140,7 +134,7 @@ export default {
       v-show="isShowComments"
       :clinic-id="clinic.id"
       :comments="clinic.comments"
-      @add-comment="onAddComment"
+      @add-comment="$emit('add-comment', $event)"
     />
   </v-card>
 </template>
