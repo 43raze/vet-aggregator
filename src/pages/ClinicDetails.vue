@@ -66,9 +66,6 @@ export default {
           {{ clinic.title }}
         </v-card-title>
 
-        <!-- <h1>{{ clinics }}</h1> -->
-        <!-- <h1>{{ $route.params.id }}</h1> -->
-
         <v-card-subtitle class="d-flex flex-wrap ga-1 mt-1">
           <v-chip
             v-for="kind in clinic.animalsKinds"
