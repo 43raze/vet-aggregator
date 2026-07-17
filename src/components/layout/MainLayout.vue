@@ -72,13 +72,6 @@ export default {
       this.clinics.push(clinic)
       this.isShowClinicModalForm = false
     },
-
-    addComment({ clinicId, ...comment }) {
-      console.log('addComment')
-      const clinic = this.clinics.find(c => c.id === clinicId)
-      if (!clinic) return
-      clinic.comments.push(comment)
-    },
   },
 }
 </script>
@@ -89,7 +82,7 @@ export default {
 
     <v-main class="app-main">
       <v-container class="pa-3 pa-sm-4">
-        <RouterView :clinics="clinics" @add-comment="addComment" />
+        <RouterView :clinics="clinics" @update-clinics="console.log" />
       </v-container>
     </v-main>
 

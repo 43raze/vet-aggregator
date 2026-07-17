@@ -6,7 +6,7 @@ export default {
 
   props: ['clinics'],
 
-  emits: ['add-comment'],
+  emits: ['add-comment', 'update-clinics'],
 
   methods: {
     goBack() {

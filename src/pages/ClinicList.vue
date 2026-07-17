@@ -7,12 +7,27 @@ export default {
 
   props: ['clinics'],
 
-  emits: ['add-comment'],
+  emits: ['add-comment', 'update-clinics'],
 
   data() {
     return {
       isFilterOpen: false,
     }
+  },
+
+  methods: {
+    addComment({ clinicId, ...comment }) {
+      const clinic = this.clinics.find(c => c.id === clinicId)
+      if (!clinic) return
+
+      const updatedClinic = { ...clinic }
+      updatedClinic.comments.push(comment)
+      const updatedClinics = this.clinics.map(c =>
+        c === clinic ? updatedClinic : c,
+      )
+
+      this.$emit('update-clinics', updatedClinics)
+    },
   },
 }
 </script>
@@ -48,10 +63,7 @@ export default {
       <v-col cols="12" md="8" lg="9" class="pa-2">
         <v-row>
           <v-col v-for="clinic in clinics" :key="clinic.id" cols="12">
-            <ClinicCard
-              :clinic="clinic"
-              @add-comment="$emit('add-comment', $event)"
-            />
+            <ClinicCard :clinic="clinic" @add-comment="addComment($event)" />
           </v-col>
         </v-row>
       </v-col>
