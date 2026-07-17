@@ -1,20 +1,17 @@
 <script>
+import CommentSection from '@/components/comment/CommentSection.vue'
+
 export default {
+  components: { CommentSection },
+
   props: ['clinics'],
 
-  data() {
-    return {}
-  },
+  emits: ['add-comment'],
 
   methods: {
     goBack() {
       this.$router.push('/')
     },
-  },
-
-  created() {
-    console.log('>>', this.clinics)
-    console.log('>>', this.clinics[0])
   },
 
   computed: {
@@ -131,50 +128,16 @@ export default {
 
       <v-divider class="my-2" />
 
-      <v-card-text>
-        <p class="text-subtitle-2 font-weight-bold mb-2">
-          <v-icon size="16">mdi-comment-outline</v-icon>
-          Коментарі ({{ clinic.comments.length }})
-        </p>
-
-        <div
-          v-for="comment in clinic.comments"
-          :key="comment.id"
-          class="comment-item pa-2 rounded-lg mb-2 d-flex align-center justify-space-between ga-2"
-        >
-          <div class="d-flex align-center ga-2">
-            <v-avatar size="28" color="indigo-lighten-4">
-              <v-icon size="16" color="indigo">mdi-account</v-icon>
-            </v-avatar>
-            <div>
-              <p class="text-body-2 font-weight-medium ma-0">
-                {{ comment.author }}
-              </p>
-              <p class="text-caption text-medium-emphasis ma-0">
-                {{ comment.text }}
-              </p>
-            </div>
-          </div>
-
-          <v-rating
-            :model-value="comment.rank"
-            :length="5"
-            density="compact"
-            size="x-small"
-            readonly
-            class="rating-red flex-shrink-0"
-          />
-        </div>
-      </v-card-text>
+      <CommentSection
+        :clinic-id="clinic.id"
+        :comments="clinic.comments"
+        @add-comment="$emit('add-comment', $event)"
+      />
     </v-card>
   </v-container>
 </template>
 
 <style scoped>
-.comment-item {
-  background: #e8eaf6;
-}
-
 .rating-red :deep(.v-icon) {
   color: #e53935 !important;
   opacity: 1 !important;
