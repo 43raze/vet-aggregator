@@ -81,6 +81,7 @@ export default {
 </script>
 
 <template>
+  <!-- @ === at === при -->
   <v-app class="app-bg">
     <TheHeader @add="isShowClinicModalForm = true" />
 

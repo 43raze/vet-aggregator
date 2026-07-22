@@ -40,3 +40,7 @@
 v-model не использовать с RouterView
 
 ✅ добавить добавление комментариев в ClinicDetails
+
+clinics сохранить в localStorage
+
+убрать метод updateClinics в MainLayout
