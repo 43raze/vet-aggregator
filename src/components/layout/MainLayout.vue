@@ -72,6 +72,10 @@ export default {
       this.clinics.push(clinic)
       this.isShowClinicModalForm = false
     },
+
+    updateClinics(clinics) {
+      this.clinics = clinics
+    },
   },
 }
 </script>
@@ -82,7 +86,7 @@ export default {
 
     <v-main class="app-main">
       <v-container class="pa-3 pa-sm-4">
-        <RouterView :clinics="clinics" @update-clinics="console.log" />
+        <RouterView :clinics="clinics" @update-clinics="updateClinics" />
       </v-container>
     </v-main>
 
