@@ -16,8 +16,6 @@ export default {
 
   computed: {
     clinic() {
-      // console.log('>', this.clinics)
-      // return this.clinics[0]
       return this.clinics.find(c => c.id === +this.$route.params.id)
     },
 
